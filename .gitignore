@@ -30,3 +30,10 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 .idea/workspace.xml
+.idea/dataSources.local.xml
+.idea/dataSources.local.xml
+.idea/dataSources.xml
+.idea/dataSources/1f800ab2-f793-462b-bc69-6bc07ef54b5d.xml
+.idea/dataSources/1f800ab2-f793-462b-bc69-6bc07ef54b5d/storage_v2/_src_/schema/main.uQUzAA.meta
+.idea/ece517p2.iml
+.idea/workspace.xml
