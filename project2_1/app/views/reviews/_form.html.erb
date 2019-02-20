@@ -1,0 +1,16 @@
+<%= form_for ([@tour, @review]) do |form| %>
+
+  <div class="field">
+  <%= form.label :review %>
+<!--    required true is the html5 client check if field is empty or not-->
+  <%= form.text_field :review, required: true%>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+  </div>
+
+
+  <div class="actions">
+  <%= form.submit"add a review" %>
+  </div>
+
+
+<% end %>
