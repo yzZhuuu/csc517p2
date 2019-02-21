@@ -1,18 +1,21 @@
 class ReviewPolicy < ApplicationPolicy
   def create?
-    user.present?
+    return true if @user.role.match? (/admin|customer/)
   end
 
   def update?
-    return true if user.present? && user == review.user
+    return true if @user.role.match? (/admin/)
+    return true if (user == tour.user) && (@user.role.match? (/customer/))
   end
 
   def destroy?
-    return true if user.present? && user == review.user
+    return true if @user.role.match? (/admin/)
+    return true if (user == tour.user) && (@user.role.match? (/customer/))
   end
 
   def edit?
-    return true if user.present? && user == review.user
+    return true if @user.role.match? (/admin/)
+    return true if (user == tour.user) && (@user.role.match? (/customer/))
   end
 
   private

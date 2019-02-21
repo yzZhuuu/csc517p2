@@ -13,12 +13,14 @@ class TourPolicy < ApplicationPolicy
 
   def update?
     #return true if user.present? && user == tour.user
-    return true if @user.role.match? (/customer/ )
+    return true if @user.role.match? (/admin/)
+    return true if user == (tour.user) &&( @user.role.match?(/agent/) )
   end
 
   def destroy?
     #return true if user.present? && user == tour.user
-    return true if @user.role.match? (/admin|agent/)
+    return true if @user.role.match? (/admin/)
+    return true if (user == tour.user) && (@user.role.match? (/agent/))
   end
 
   private

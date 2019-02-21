@@ -30,4 +30,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  helpers:
+    label:
+      tour:
+        name: "Tour Name"
+        user: "Creator"
+      review:
+        user: "Wrote by"
+        tour: "Tour Name"

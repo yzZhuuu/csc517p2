@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+      resources :users
+      resources :tours
+      resources :photos
+      resources :reviews
+
+      root to: "users#index"
+    end
   devise_for :users, path: 'users', controllers: {
       registrations: "users/registrations"}
 
