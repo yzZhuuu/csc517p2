@@ -1,0 +1,34 @@
+<div class="container">
+<p id="notice"><%= notice %></p>
+
+<h1>Photos</h1>
+
+  <p><%= link_to 'Add a photo', new_tour_photo_path %></p>
+  <p><%= link_to 'Back to tour', tour_path(@tour) %></p>
+
+  <table class="table">
+  <thead>
+    <tr>
+
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @photos.each do |p| %>
+      <tr>
+        <th><%= image_tag(p.image.url, alt: 'Image',size: '400') if p.image? %></th>
+
+
+        <!--        <td><%#= link_to 'Edit', edit_blog_path(blog) %></td>-->
+        <td><%= link_to 'Destroy', tour_photo_path(p.tour_id,p.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
+
+  </tbody>
+</table>
+
+<br>
+
+
+</div>

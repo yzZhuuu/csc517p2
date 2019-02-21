@@ -11,6 +11,10 @@ class ReviewPolicy < ApplicationPolicy
     return true if user.present? && user == review.user
   end
 
+  def edit?
+    return true if user.present? && user == review.user
+  end
+
   private
 
   def review

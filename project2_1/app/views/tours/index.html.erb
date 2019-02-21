@@ -1,8 +1,12 @@
+<div class="container">
+
 <p id="notice"><%= notice %></p>
 
-<h1>Tours</h1>
 
-<table>
+
+<h1>Tours</h1>
+<p>
+  <table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -26,8 +30,11 @@
   </tbody>
 </table>
 
+</p>
+
 <br>
 
-<%= link_to 'New Tour', new_tour_path %>
-<%= link_to 'Back to Welcome Page', root_path %>
+<p><%= link_to 'Create a new tour', new_tour_path %></p>
+<%#= link_to 'Back to Welcome Page', root_path %>
 <%#= link_to 'Dash Board', tours_dashboard_path %>
+</div>

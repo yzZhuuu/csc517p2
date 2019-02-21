@@ -1,3 +1,5 @@
+<div class="container">
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -11,18 +13,24 @@
 </p>
 
 
-<p>
-  <strong>Total Seats:</strong>
+<!--<p>-->
+<!--  <strong>Total Seats:</strong>-->
   <%#= @tour.description %>
-</p>
+<!--</p>-->
 
-<p>
-  <strong>Available Seats:</strong>
+<!--<p>-->
+<!--  <strong>Available Seats:</strong>-->
   <%#= @tour.description %>
-</p>
+<!--</p>-->
 
-<%= render 'reviews/form' %>
-<%= render 'reviews/review' %>
+  <p>
+    <strong>Check Photos:</strong>
+    <%= link_to 'link to photos ', tour_photos_path(@tour) %></p>
 
-<%= link_to 'Edit', edit_tour_path(@tour) %> |
-<%= link_to 'Back', tours_path %>
+
+  <p><%= render 'reviews/form' %></p>
+  <p><%= render 'reviews/review' %></p>
+
+<p><%= link_to 'Edit', edit_tour_path(@tour) %> |
+  <%= link_to 'Back', tours_path %></p>
+</div>

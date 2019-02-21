@@ -14,6 +14,9 @@ class ToursController < ApplicationController
     @review = Review.new
 
     @reviews = @tour.reviews
+
+    @tour = Tour.find(params[:id])
+    authorize @tour
   end
 
   # GET /tours/new

@@ -1,16 +1,33 @@
+<table class="table">
+
+  <thead>
+  <tr>
+    <th>Reviews</th>
+  </tr>
+  </thead>
+
+  <tbody>
+
 <%= form_for ([@tour, @review]) do |form| %>
 
   <div class="field">
-  <%= form.label :review %>
+  <p><%= form.label :subject %></p>
 <!--    required true is the html5 client check if field is empty or not-->
-  <%= form.text_field :review, required: true%>
-    <%= form.hidden_field :user_id, value: current_user.id %>
+  <p><%= form.text_field :subject, required: true%></p>
+    <p><%= form.label :message %></p>
+    <!--    required true is the html5 client check if field is empty or not-->
+    <p><%= form.text_field :message, required: true%></p>
+    <p><% form.hidden_field :user_id, value: current_user.id %></p>
   </div>
 
 
   <div class="actions">
-  <%= form.submit"add a review" %>
+    <p><%= form.submit"add a review" %></p>
   </div>
 
 
 <% end %>
+
+  </tbody>
+
+</table>

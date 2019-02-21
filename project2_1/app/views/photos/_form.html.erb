@@ -1,0 +1,18 @@
+
+<%= form_for ([@tour, @photo]) do |form| %>
+
+  <div class="field">
+
+    <p><%= form.label :image %></p>
+    <p><%= form.file_field :image %></p>
+
+    <% form.hidden_field :user_id, value: current_user.id %>
+  </div>
+
+
+  <div class="actions">
+  <p><%= form.submit"add a image" %></p>
+  </div>
+
+
+<% end %>
