@@ -1,0 +1,13 @@
+<% @reviews.each do |r| %>
+
+  <div class="field">
+    <p><%= r.subject %></p>
+    <p><%= r.message %></p>
+    <p>-<%= r.user.email %></p>
+    <p><%= link_to "edit", edit_tour_review_path(r.tour_id,r.id) %>
+    <%= link_to "delete", tour_review_path(r.tour_id,r.id), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+  </div>
+
+
+
+<% end %>
