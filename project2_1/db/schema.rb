@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_21_010038) do
+ActiveRecord::Schema.define(version: 2019_02_22_033544) do
+
+  create_table "books", force: :cascade do |t|
+    t.integer "book_seat"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "tour_id"
+    t.integer "user_id"
+    t.string "choice"
+    t.index ["tour_id"], name: "index_books_on_tour_id"
+    t.index ["user_id"], name: "index_books_on_user_id"
+  end
 
   create_table "photos", force: :cascade do |t|
     t.string "image"
@@ -39,6 +50,9 @@ ActiveRecord::Schema.define(version: 2019_02_21_010038) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.integer "total_seat"
+    t.integer "aval_seat"
+    t.string "status"
     t.index ["user_id"], name: "index_tours_on_user_id"
   end
 
@@ -52,6 +66,16 @@ ActiveRecord::Schema.define(version: 2019_02_21_010038) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "waitlists", force: :cascade do |t|
+    t.integer "wait_seat"
+    t.integer "user_id"
+    t.integer "tour_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tour_id"], name: "index_waitlists_on_tour_id"
+    t.index ["user_id"], name: "index_waitlists_on_user_id"
   end
 
 end

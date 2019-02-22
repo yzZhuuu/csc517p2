@@ -1,0 +1,38 @@
+<%= form_for ([@tour, @book]) do |form| %>
+
+  <%# if @book.errors.any? %>
+  <!--    <div id="error_explanation">-->
+  <!--      <h2><%#= pluralize(@book.errors.count, "error") %> prohibited this tour from being saved:</h2>-->
+
+  <!--      <ul>-->
+  <%# @book.errors.full_messages.each do |message| %>
+  <!--          <li><%#= message %></li>-->
+  <%# end %>
+  <!--      </ul>-->
+  <!--    </div>-->
+  <%# end %>
+
+  <div class="field">
+    <p><%= form.label :book_seat %></p>
+    <!--    required true is the html5 client check if field is empty or not-->
+    <p><%= form.number_field :book_seat, required: true %></p>
+
+    <p>
+      <% form.hidden_field :user_id, value: current_user.id %></p>
+
+  </div>
+
+  <div class="field">
+    <p><%= form.label :choice %></p>
+    <p><%= form.select :choice, options_for_select(%w[nothing wait continue cancel]) %></p>
+  </div>
+
+
+
+
+  <div class="actions">
+    <p><%= form.submit "Booking seats" %></p>
+  </div>
+
+
+<% end %>

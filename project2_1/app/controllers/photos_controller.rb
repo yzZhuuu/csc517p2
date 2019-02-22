@@ -40,7 +40,7 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to tour_photos_path, notice: 'Image was successfully destroyed.' }
-      format.json { head :no_content }
+      # format.json { head :no_content }
     end
 
   end
