@@ -1,6 +1,6 @@
 class WaitlistPolicy < ApplicationPolicy
   def create?
-    return true if @user.role.match? (/admin|customer/)
+    return true if @user.role.match (/admin|customer/)
   end
 
   # def update?
@@ -8,8 +8,8 @@ class WaitlistPolicy < ApplicationPolicy
   # end
   #
   def destroy?
-    return true if @user.role.match? (/admin/)
-    return true if (user == waitlist.user) && (@user.role.match? (/customer/))
+    return true if @user.role.match (/admin/)
+    return true if (user == waitlist.user) && (@user.role.match (/customer/))
   end
   #
   # def edit?

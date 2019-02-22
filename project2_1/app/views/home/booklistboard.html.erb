@@ -1,0 +1,69 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+
+  <h1>Book List Page</h1>
+
+  <table class="table">
+
+    <thead>
+    <tr>
+      <th>Tour Name</th>
+      <th>Booked seats</th>
+      <th>User Info</th>
+      <th>Update Time</th>
+<!--      <th colspan="2"></th>-->
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <% @tours.each do |t| %>
+
+      <% @books = t.books %>
+
+      <% @books.each do |b| %>
+
+
+        <% if (b.user_id == current_user.id) || (current_user.role.match(/admin/)) %>
+
+          <tr>
+            <th><%= t.name %></th>
+            <td><%= b.book_seat %></td>
+
+            <td><%= b.user.name %></td>
+            <td><%= b.updated_at %></td>
+          </tr>
+
+
+        <% end %>
+
+
+      <% end %>
+
+    <% end %>
+
+    </tbody>
+
+  </table>
+
+
+  <!--      <ul class="nav navbar-nav pull-right">-->
+  <!--        <ul class="nav navbar-nav pull-right">-->
+  <%# if user_signed_in? %>
+  <!--            <li><%#= current_user.email %></li>-->
+  <!--            <li><%#= link_to 'Log out', destroy_user_session_path, method: :delete %></li>-->
+  <%# else %>
+  <!--            <li><%#= link_to 'Log In', new_user_session_path %></li>-->
+  <!--            <li><%#= link_to 'Sign Up', new_user_registration_path %></li>-->
+  <%# end %>
+  <!--        </ul>-->
+  <!--      </ul>-->
+
+
+<!--  <p><%#= link_to 'check the tour', tours_path %></p>-->
+<!--  <p><%#= link_to 'check the wait list', home_waitlistboard_path%></p>-->
+<!--  <p><%#= link_to 'check the booking list', home_booklistboard_path%></p>-->
+<!--  <p><%#= link_to 'check the bookmark list', home_bookmarklistboard_path%></p>-->
+<%#= link_to 'Dash Board', tours_dashboard_path %>
+  <p><%= link_to 'Back', root_path %></p>
+</div>
