@@ -28,19 +28,14 @@
   </div>
 
     <div class="field">
-      <%= f.label :role %>
-      <%= f.select :role, options_for_select(%w[customer agent]) %>
+      <p><%= f.label :role %></p>
+      <p><%= f.select :role, options_for_select(%w[customer agent]) %></p>
     </div>
 
-    <p>
-      <strong>    </strong>
-      <strong>    </strong>
-
-    </p>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+    <div class="actions">
+    <p> <%= f.submit "Sign up" %><p>
   </div>
+
 <% end %>
 
 <%= render "users/shared/links" %>
