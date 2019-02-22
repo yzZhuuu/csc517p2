@@ -22,6 +22,12 @@ class TourDashboard < Administrate::BaseDashboard
     total_seat: Field::Number,
     aval_seat: Field::Number,
     status: Field::String,
+    price: Field::Number,
+    booking_deadline: Field::DateTime.with_options(format: "%b %d %Y  %H:%M:%S"),
+    start_date: Field::DateTime.with_options(format: "%b %d %Y  %H:%M:%S"),
+    end_date: Field::DateTime.with_options(format: "%b %d %Y  %H:%M:%S"),
+    start_location: Field::String,
+    contact_info: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -31,12 +37,12 @@ class TourDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
       :id,
-    :user,
-    :name,
+      :user,
+      :name,
     #:status,
-    :aval_seat,
-    :created_at,
-    :reviews,
+      :price,
+      :aval_seat,
+      :booking_deadline,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -48,9 +54,15 @@ class TourDashboard < Administrate::BaseDashboard
       :created_at,
       :updated_at,
       :description,
-      :status,
+      :price,
+      :start_date,
+      :end_date,
+      :booking_deadline,
+      :start_location,
       :total_seat,
       :aval_seat,
+      :status,
+      :contact_info,
       #:photos,
       :books,
       :waitlists,
@@ -65,6 +77,11 @@ class TourDashboard < Administrate::BaseDashboard
     :name,
     :description,
     :total_seat,
+    :price,
+    :start_date,
+    :end_date,
+    :booking_deadline,
+    :start_location,
   #:review,
   #:photos,
   ].freeze
