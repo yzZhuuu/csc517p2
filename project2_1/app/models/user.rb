@@ -9,5 +9,6 @@ class User < ApplicationRecord
   has_many :photos
   has_many :waitlists
   has_many :books
+  has_many :bookmarks
 
 end

@@ -6,6 +6,7 @@
     <%= form_for ([@tour, @review]) do |form| %>
 
       <div class="field">
+        <p>Add your review here:</p>
         <p><%= form.label :subject %></p>
         <!--    required true is the html5 client check if field is empty or not-->
         <p><%= form.text_field :subject, required: true %></p>
