@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class PhotoDashboard < Administrate::BaseDashboard
+class BookDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,12 +8,13 @@ class PhotoDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    tour: Field::BelongsTo,
     user: Field::BelongsTo,
+    tour: Field::BelongsTo,
     id: Field::Number,
-    image: Field::String,
+    book_seat: Field::Number,
     created_at: Field::DateTime.with_options(format: "%b %d %Y  %H:%M:%S"),
     updated_at: Field::DateTime.with_options(format: "%b %d %Y  %H:%M:%S"),
+    choice: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -22,36 +23,38 @@ class PhotoDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :tour,
     :user,
+    :tour,
     :id,
-    :image,
+    :book_seat,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :tour,
     :user,
+    :tour,
     :id,
-    :image,
+    :book_seat,
     :created_at,
     :updated_at,
+   # :choice,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :tour,
     :user,
-    :image,
+    :tour,
+    :book_seat,
+   # :choice,
   ].freeze
 
-  # Overwrite this method to customize how photos are displayed
+  # Overwrite this method to customize how books are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(photo)
-  #   "Photo ##{photo.id}"
+  # def display_resource(book)
+  #   "Book ##{book.id}"
   # end
 end

@@ -4,13 +4,15 @@ class PhotoPolicy < ApplicationPolicy
   end
 
   def update?
+
     return true if @user.role.match (/admin/)
-    return true if (user == tour.user) && (@user.role.match (/agent/))
+    return true if (user == photo.user) && (@user.role.match (/agent/))
   end
 
   def destroy?
     return true if @user.role.match (/admin/)
-    return true if (user == tour.user) && (@user.role.match (/agent/))
+    return true if (user == photo.user) && (@user.role.match (/agent/))
+
   end
 
   private
