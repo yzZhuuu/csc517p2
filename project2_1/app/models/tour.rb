@@ -8,6 +8,7 @@ class Tour < ApplicationRecord
   has_many :users,through: :photos
   has_many :users,through: :waitlists
   has_many :users,through: :books
+  has_many :bookmarks
 
   validates :total_seat, numericality: { only_integer: true, greater_than: 0 }
 
