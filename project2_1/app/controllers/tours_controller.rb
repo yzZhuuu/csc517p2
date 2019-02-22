@@ -11,11 +11,19 @@ class ToursController < ApplicationController
   # GET /tours/1
   # GET /tours/1.json
   def show
-    @review = Review.new
-
-    @reviews = @tour.reviews
 
     @tour = Tour.find(params[:id])
+
+    @review = Review.new
+    @reviews = @tour.reviews
+
+    @book = Book.new
+    @books = @tour.books
+
+    # @waitlist = Waitlist.new
+    @waitlists = @tour.waitlists
+
+
     authorize @tour
   end
 
@@ -32,18 +40,22 @@ class ToursController < ApplicationController
   # POST /tours
   # POST /tours.json
   def create
+
+
     @tour = Tour.new(tour_params)
     @tour.user = current_user
+
+    @tour.aval_seat = @tour.total_seat
 
     authorize @tour
 
     respond_to do |format|
       if @tour.save
-        format.html { redirect_to @tour, notice: 'Tour was successfully created.' }
-        format.json { render :show, status: :created, location: @tour }
+        format.html {redirect_to @tour, notice: 'Tour was successfully created.'}
+        format.json {render :show, status: :created, location: @tour}
       else
-        format.html { render :new }
-        format.json { render json: @tour.errors, status: :unprocessable_entity }
+        format.html {render :new}
+        format.json {render json: @tour.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -54,11 +66,11 @@ class ToursController < ApplicationController
     authorize @tour
     respond_to do |format|
       if @tour.update(tour_params)
-        format.html { redirect_to @tour, notice: 'Tour was successfully updated.' }
-        format.json { render :show, status: :ok, location: @tour }
+        format.html {redirect_to @tour, notice: 'Tour was successfully updated.'}
+        format.json {render :show, status: :ok, location: @tour}
       else
-        format.html { render :edit }
-        format.json { render json: @tour.errors, status: :unprocessable_entity }
+        format.html {render :edit}
+        format.json {render json: @tour.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -69,19 +81,20 @@ class ToursController < ApplicationController
     authorize @tour
     @tour.destroy
     respond_to do |format|
-      format.html { redirect_to tours_url, notice: 'Tour was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html {redirect_to tours_url, notice: 'Tour was successfully destroyed.'}
+      format.json {head :no_content}
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_tour
-      @tour = Tour.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def tour_params
-      params.require(:tour).permit(:name, :description, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_tour
+    @tour = Tour.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def tour_params
+    params.require(:tour).permit(:name, :description, :total_seat, :aval_seat, :user_id)
+  end
 end

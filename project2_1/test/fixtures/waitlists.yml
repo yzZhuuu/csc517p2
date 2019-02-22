@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  wait_seat: 1
+  user: one
+  tour: one
+
+two:
+  wait_seat: 1
+  user: two
+  tour: two

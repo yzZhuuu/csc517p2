@@ -1,4 +1,9 @@
+
+
 <div class="container">
+
+  <p><%= link_to 'Edit Tour', edit_tour_path(@tour) %> |
+    <%= link_to 'Back to tour list', tours_path %></p>
 
 <p id="notice"><%= notice %></p>
 
@@ -13,10 +18,22 @@
 </p>
 
 
-<!--<p>-->
-<!--  <strong>Total Seats:</strong>-->
-  <%#= @tour.description %>
-<!--</p>-->
+<p>
+  <strong>Total Seats:</strong>
+  <%= @tour.total_seat %>
+</p>
+
+  <p>
+
+    <strong>Available Seats:</strong>
+
+    <%# @books.each do |b| %>
+      <%# @tour.aval_seat = @tour.aval_seat - b.book_seat %>
+    <%# end %>
+
+  <%= @tour.aval_seat %>
+
+  </p>
 
 <!--<p>-->
 <!--  <strong>Available Seats:</strong>-->
@@ -25,12 +42,18 @@
 
   <p>
     <strong>Check Photos:</strong>
-    <%= link_to 'link to photos ', tour_photos_path(@tour) %></p>
+    <%= link_to 'link to photos ', tour_photos_path(@tour) %>
+  </p>
 
+
+
+  <p><%= render 'books/form'%></p>
+  <p><%= render 'books/book' %></p>
+
+  <p><%= render 'waitlists/waitlist' %></p>
 
   <p><%= render 'reviews/form' %></p>
   <p><%= render 'reviews/review' %></p>
 
-<p><%= link_to 'Edit', edit_tour_path(@tour) %> |
-  <%= link_to 'Back', tours_path %></p>
+
 </div>
