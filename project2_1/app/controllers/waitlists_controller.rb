@@ -2,6 +2,8 @@ class WaitlistsController < ApplicationController
 
   def index
 
+    @tour = Tour.find(params[:tour_id])
+
   end
 
   def destroy

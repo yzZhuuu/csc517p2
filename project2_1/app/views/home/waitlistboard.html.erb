@@ -1,0 +1,49 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+
+  <h1>Wait List Page</h1>
+
+  <table class="table">
+
+    <thead>
+    <tr>
+      <th>Waited seats</th>
+      <th>User Info</th>
+      <th>Update Time</th>
+<!--      <th colspan="2"></th>-->
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <% @tours.each do |t| %>
+
+      <% @waitlists = t.waitlists %>
+
+      <% @waitlists.each do |w| %>
+
+
+        <% if (w.user_id == current_user.id) || (current_user.role.match(/admin/)) %>
+
+
+          <tr>
+            <td><%= w.wait_seat %></td>
+
+            <td><%= w.user.name %></td>
+            <td><%= w.updated_at %></td>
+          </tr>
+
+
+        <% end %>
+
+
+      <% end %>
+
+    <% end %>
+
+    </tbody>
+
+  </table>
+
+  <p><%= link_to 'Back', root_path %></p>
+</div>

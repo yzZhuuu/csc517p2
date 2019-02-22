@@ -12,26 +12,18 @@
 
   <% @books.each do |b| %>
 
-
     <% if (b.user_id == current_user.id) ||( current_user.role.match(/admin/))%>
-
-
 
       <tr>
         <td><%= b.book_seat %></td>
 
-        <td><%= b.user.email %></td>
+        <td><%= b.user.name %></td>
         <td><%= link_to "edit", edit_tour_book_path(b.tour_id, b.id) %></td>
 
         <td><%= link_to 'Destroy', tour_book_path(b.tour_id, b.id), method: :delete, data: {confirm: 'Are you sure?'} %></td>
       </tr>
 
-
-
     <% end %>
-    <!--    <p><%#= link_to "edit", edit_tour_review_path(r.tour_id,r.id) %>-->
-    <!--    <%#= link_to "delete", tour_review_path(r.tour_id,r.id), method: :delete, data: { confirm: 'Are you sure?' } %></p>-->
-
 
   <% end %>
   </tbody>
