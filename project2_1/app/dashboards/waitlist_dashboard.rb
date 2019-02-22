@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class TourDashboard < Administrate::BaseDashboard
+class WaitlistDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -9,19 +9,11 @@ class TourDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     user: Field::BelongsTo,
-    reviews: Field::HasMany,
-    photos: Field::HasMany,
-    users: Field::HasMany,
-    books: Field::HasMany,
-    waitlists: Field::HasMany,
+    tour: Field::BelongsTo,
     id: Field::Number,
-    name: Field::String,
-    description: Field::Text,
+    wait_seat: Field::Number,
     created_at: Field::DateTime.with_options(format: "%b %d %Y  %H:%M:%S"),
     updated_at: Field::DateTime.with_options(format: "%b %d %Y  %H:%M:%S"),
-    total_seat: Field::Number,
-    aval_seat: Field::Number,
-    status: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -31,30 +23,20 @@ class TourDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
       :id,
-    :user,
-    :name,
-    #:status,
-    :aval_seat,
-    :created_at,
-    :reviews,
+      :user,
+      :tour,
+      :wait_seat,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-      :name,
-      :user,
-      :id,
-      :created_at,
-      :updated_at,
-      :description,
-      :status,
-      :total_seat,
-      :aval_seat,
-      #:photos,
-      :books,
-      :waitlists,
-      :reviews,
+    :user,
+    :tour,
+    :id,
+    :wait_seat,
+    :created_at,
+    :updated_at,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -62,18 +44,14 @@ class TourDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :user,
-    :name,
-    :description,
-    :total_seat,
-  #:review,
-  #:photos,
+    :tour,
+    :wait_seat,
   ].freeze
 
-  # Overwrite this method to customize how tours are displayed
+  # Overwrite this method to customize how waitlists are displayed
   # across all pages of the admin dashboard.
   #
-   def display_resource(tour)
-     tour.name
-   end
-
+  # def display_resource(waitlist)
+  #   "Waitlist ##{waitlist.id}"
+  # end
 end
