@@ -4,7 +4,7 @@ class TourPolicy < ApplicationPolicy
   end
 
   def create?
-    user.present?
+    return true if @user.role.match? (/admin|agent/)
   end
 
   def show?
@@ -12,11 +12,13 @@ class TourPolicy < ApplicationPolicy
   end
 
   def update?
-    return true if user.present? && user == tour.user
+    #return true if user.present? && user == tour.user
+    return true if @user.role.match? (/customer/ )
   end
 
   def destroy?
-    return true if user.present? && user == tour.user
+    #return true if user.present? && user == tour.user
+    return true if @user.role.match? (/admin|agent/)
   end
 
   private
