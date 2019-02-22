@@ -17,6 +17,9 @@ class TourDashboard < Administrate::BaseDashboard
     description: Field::Text,
     created_at: Field::DateTime.with_options(format: "%b %d %Y  %H:%M:%S"),
     updated_at: Field::DateTime.with_options(format: "%b %d %Y  %H:%M:%S"),
+    total_seat: Field::Number,
+    aval_seat: Field::Number,
+    status: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -27,6 +30,8 @@ class TourDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :user,
     :name,
+    #:status,
+    :aval_seat,
     :created_at,
     :reviews,
   ].freeze
@@ -40,7 +45,10 @@ class TourDashboard < Administrate::BaseDashboard
       :created_at,
       :updated_at,
       :description,
-      :photos,
+      :status,
+      :total_seat,
+      :aval_seat,
+      #:photos,
       :reviews,
   ].freeze
 
@@ -51,6 +59,7 @@ class TourDashboard < Administrate::BaseDashboard
     :user,
     :name,
     :description,
+    :total_seat,
   #:review,
   #:photos,
   ].freeze
@@ -61,7 +70,5 @@ class TourDashboard < Administrate::BaseDashboard
    def display_resource(tour)
      tour.name
    end
-  # def display_resource(user)
-  #     user.name
-  #   end
+
 end
