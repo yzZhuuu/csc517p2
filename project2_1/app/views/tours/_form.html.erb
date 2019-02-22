@@ -30,6 +30,36 @@
     <p><% form.hidden_field :aval_seat, value: tour.total_seat %></p>
   </div>
 
+  <div class="field">
+    <p><%= form.label :price %></p>
+    <p><%= form.text_field :price %></p>
+  </div>
+
+  <div class="field">
+    <p><%= form.label :booking_deadline %></p>
+    <p><%= form.date_select :booking_deadline %></p>
+  </div>
+
+  <div class="field">
+    <p><%= form.label :start_date %></p>
+    <p><%= form.date_select :start_date %></p>
+  </div>
+
+  <div class="field">
+    <p><%= form.label :end_date %></p>
+    <p><%= form.date_select :end_date %></p>
+  </div>
+
+  <div class="field">
+    <p><%= form.label :start_location %></p>
+    <p><%= form.text_field :start_location %></p>
+  </div>
+
+  <div class="field">
+    <p><%= form.label :contact_information %></p>
+    <p><%= form.text_field :contact_info %></p>
+  </div>
+
   <div class="actions">
     <p><%= form.submit %></p>
   </div>
