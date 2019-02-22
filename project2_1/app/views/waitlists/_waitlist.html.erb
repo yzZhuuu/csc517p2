@@ -1,3 +1,4 @@
+
 <table class="table">
 
   <thead>
@@ -9,18 +10,25 @@
   </thead>
 
   <tbody>
-
 <% @waitlists.each do |w| %>
 
-    <tr>
-    <td><%= w.wait_seat %></td>
-<!--    <p><%#= b.aval_seat %></p>-->
-    <td><%= w.user.email %></td>
-      <td><%= link_to 'Destroy', tour_waitlist_path(w.tour_id,w.id), method: :delete, data: {confirm: 'Are you sure?'} %></td>
-    </tr>
 
-<!--    <p><%#= link_to "edit", edit_tour_review_path(r.tour_id,r.id) %>-->
-<!--    <%#= link_to "delete", tour_review_path(r.tour_id,r.id), method: :delete, data: { confirm: 'Are you sure?' } %></p>-->
+
+  <% if w.user_id == current_user.id %>
+
+
+
+
+      <tr>
+        <td><%= w.wait_seat %></td>
+        <!--    <p><%#= b.aval_seat %></p>-->
+        <td><%= w.user.email %></td>
+        <td><%= link_to 'Destroy', tour_waitlist_path(w.tour_id, w.id), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      </tr>
+
+  <% end %>
+  <!--    <p><%#= link_to "edit", edit_tour_review_path(r.tour_id,r.id) %>-->
+  <!--    <%#= link_to "delete", tour_review_path(r.tour_id,r.id), method: :delete, data: { confirm: 'Are you sure?' } %></p>-->
 
 
 

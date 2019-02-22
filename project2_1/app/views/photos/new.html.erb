@@ -1,7 +1,25 @@
 <div class="container">
+
+  <p id="notice"><%= notice %></p>
+
 <h1>Add a new photo</h1>
 
-<p><%= render 'form', photo: @photo %></p>
+  <%= form_for [@tour, @photo] do |f| %>
+
+    <div class="field">
+
+      <p><%= f.label :image %></p>
+      <p><%= f.file_field :image %></p>
+      <p> <%= f.hidden_field :user_id, value: current_user.id %></p>
+
+    </div>
+
+
+      <p><%= f.submit "add a image"%></p>
+
+
+
+  <% end %>
 
 <p><%= link_to 'Back', tour_photos_path %></p>
 </div>

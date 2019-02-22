@@ -1,34 +1,32 @@
-<table class="table">
+<% @books.each do |b| %>
 
-  <thead>
-  <tr>
-    <th>Reviews</th>
-
-  </tr>
-  </thead>
-
-  <tbody>
-
-<%= form_for ([@tour, @review]) do |form| %>
-
-  <div class="field">
-  <p><%= form.label :subject %></p>
-<!--    required true is the html5 client check if field is empty or not-->
-  <p><%= form.text_field :subject, required: true%></p>
-    <p><%= form.label :message %></p>
-    <!--    required true is the html5 client check if field is empty or not-->
-    <p><%= form.text_field :message, required: true%></p>
-    <p><% form.hidden_field :user_id, value: current_user.id %></p>
-  </div>
+  <% if b.user_id == current_user.id %>
 
 
-  <div class="actions">
-    <p><%= form.submit"add a review" %></p>
-  </div>
+    <%= form_for ([@tour, @review]) do |form| %>
+
+      <div class="field">
+        <p><%= form.label :subject %></p>
+        <!--    required true is the html5 client check if field is empty or not-->
+        <p><%= form.text_field :subject, required: true %></p>
+        <p><%= form.label :message %></p>
+        <!--    required true is the html5 client check if field is empty or not-->
+        <p><%= form.text_field :message, required: true %></p>
+        <p>
+          <% form.hidden_field :user_id, value: current_user.id %></p>
+      </div>
+
+
+      <div class="actions">
+        <p><%= form.submit "add a review" %></p>
+      </div>
+
+
+    <% end %>
+
+  <% end %>
 
 
 <% end %>
 
-  </tbody>
 
-</table>

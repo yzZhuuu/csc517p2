@@ -6,8 +6,10 @@ Rails.application.routes.draw do
       resources :photos
       resources :reviews
 
-      root to: "users#index"
-    end
+      # root to: "users#index"
+  end
+
+
   devise_for :users, path: 'users', controllers: {
       registrations: "users/registrations"}
 

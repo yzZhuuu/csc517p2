@@ -1,34 +1,36 @@
 <div class="container">
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
 
-<h1>Photos</h1>
+  <h1>Photos</h1>
 
-  <p><%= link_to 'Add a photo', new_tour_photo_path %></p>
+  <% if (@tour.user_id == current_user.id) && (current_user.role.match(/admin|agent/)) %>
+    <p><%= link_to 'Add a photo', new_tour_photo_path %></p>
+  <% end %>
   <p><%= link_to 'Back to tour', tour_path(@tour) %></p>
 
   <table class="table">
-  <thead>
+    <thead>
     <tr>
 
       <th colspan="2"></th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody>
+    <tbody>
     <% @photos.each do |p| %>
       <tr>
-        <th><%= image_tag(p.image.url, alt: 'Image',size: '400') if p.image? %></th>
+        <th><%= image_tag(p.image.url, alt: 'Image', size: '400') if p.image? %></th>
 
 
         <!--        <td><%#= link_to 'Edit', edit_blog_path(blog) %></td>-->
-        <td><%= link_to 'Destroy', tour_photo_path(p.tour_id,p.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', tour_photo_path(p.tour_id, p.id), method: :delete, data: {confirm: 'Are you sure?'} %></td>
       </tr>
-      <% end %>
+    <% end %>
 
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
-<br>
+  <br>
 
 
 </div>

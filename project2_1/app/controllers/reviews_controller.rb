@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
 
   def create
     @tour = Tour.find(params[:tour_id])
-    @review = @tour.reviews.create(review_params)
+    @review = @tour.reviews.new(review_params)
     @review.user = current_user
 
     authorize @review

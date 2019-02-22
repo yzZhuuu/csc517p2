@@ -7,7 +7,7 @@ class BooksController < ApplicationController
     @tour = Tour.find(params[:tour_id])
 
 
-    @book = @tour.books.create(book_params)
+    @book = @tour.books.new(book_params)
 
     authorize @book
 
@@ -50,7 +50,7 @@ class BooksController < ApplicationController
       elsif @book.choice == 'wait'
 
         @waitlist2 = Waitlist.new
-        @waitlist2 = @tour.waitlists.create(:wait_seat => @book.book_seat, :user_id => @tour.user_id)
+        @waitlist2 = @tour.waitlists.new(:wait_seat => @book.book_seat, :user_id => @tour.user_id)
 
         if @waitlist2.save
           respond_to do |format|
@@ -68,7 +68,7 @@ class BooksController < ApplicationController
 
 
         @waitlist1 = Waitlist.new
-        @waitlist1 = @tour.waitlists.create(:wait_seat => (0 - @tour.aval_seat), :user_id => @tour.user_id)
+        @waitlist1 = @tour.waitlists.new(:wait_seat => (0 - @tour.aval_seat), :user_id => @tour.user_id)
 
         if @waitlist1.save
 
@@ -135,12 +135,12 @@ class BooksController < ApplicationController
 
     @waitlists.each do |w|
 
-      if (w.wait_seat < @book.book_seat)
+      if (w.wait_seat <= @book.book_seat)
 
 
         @book.book_seat = @book.book_seat - w.wait_seat
 
-        @bookNew = @tour.books.create(:book_seat => w.wait_seat, :user_id => w.user_id, :choice => 'nothing')
+        @bookNew = @tour.books.new(:book_seat => w.wait_seat, :user_id => w.user_id, :choice => 'nothing')
         @bookNew.save
 
         Tour.update(@tour.id, :aval_seat => (@tour.aval_seat + @book.book_seat))
@@ -150,6 +150,8 @@ class BooksController < ApplicationController
         flag = false
 
         break
+
+
 
       end
 
@@ -218,7 +220,7 @@ class BooksController < ApplicationController
 
           @book.book_seat = bookOld - @book.book_seat - w.wait_seat
 
-          @bookNew = @tour.books.create(:book_seat => w.wait_seat, :user_id => w.user_id, :choice => 'nothing')
+          @bookNew = @tour.books.new(:book_seat => w.wait_seat, :user_id => w.user_id, :choice => 'nothing')
           @bookNew.save
 
           Tour.update(@tour.id, :aval_seat => (@tour.aval_seat + @book.book_seat))
