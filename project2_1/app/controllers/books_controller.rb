@@ -18,7 +18,12 @@ class BooksController < ApplicationController
     if @tour.aval_seat >= 0
 
       # update the aval_seast in the tour
-      if Tour.update(@tour.id, :aval_seat => @tour.aval_seat)
+      if Tour.update(@tour.id, :aval_seat => @tour.aval_seat, :user_id => @tour.user_id)
+
+        # respond_to do |format|
+        #
+        #   format.html {redirect_to @tour, notice: 'seats aval updated.'}
+        # end
         flash.now[:notice] = 'Available Seats updated!'
       else
         flash.now[:notice] = 'Error occurs!'

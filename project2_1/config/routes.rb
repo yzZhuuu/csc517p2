@@ -15,11 +15,13 @@ Rails.application.routes.draw do
 
   devise_for :users, path: 'users', controllers: {
       registrations: "users/registrations"}
+
   resources :tours do
     resources :reviews
     resources :photos
     resources :books
     resources :waitlists
+    resources :bookmarks
   end
 
   # match '/dashboard', :to=> 'tours#dashboard', :as => 'dashboard'
