@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class ReviewDashboard < Administrate::BaseDashboard
+class WaitlistDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,13 +8,12 @@ class ReviewDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    tour: Field::BelongsTo,
     user: Field::BelongsTo,
+    tour: Field::BelongsTo,
     id: Field::Number,
-    subject: Field::String,
+    wait_seat: Field::Number,
     created_at: Field::DateTime.with_options(format: "%b %d %Y  %H:%M:%S"),
     updated_at: Field::DateTime.with_options(format: "%b %d %Y  %H:%M:%S"),
-    message: Field::Text,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -24,38 +23,35 @@ class ReviewDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
       :id,
+      :user,
       :tour,
-    :user,
-    :subject,
-    :created_at,
+      :wait_seat,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :tour,
     :user,
+    :tour,
     :id,
-    :subject,
+    :wait_seat,
     :created_at,
     :updated_at,
-    :message,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-     :tour,
-     :user,
-     :subject,
-     :message,
+    :user,
+    :tour,
+    :wait_seat,
   ].freeze
 
-  # Overwrite this method to customize how reviews are displayed
+  # Overwrite this method to customize how waitlists are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(review)
-  #   "Review ##{review.id}"
+  # def display_resource(waitlist)
+  #   "Waitlist ##{waitlist.id}"
   # end
 end

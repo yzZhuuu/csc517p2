@@ -5,8 +5,8 @@ Rails.application.routes.draw do
       resources :tours
       resources :reviews
       resources :books
-      resources :bookmarks
-      #resources :waitlists
+      # resources :bookmarks
+      resources :waitlists
 
 
       # root to: "users#index"
@@ -23,9 +23,6 @@ Rails.application.routes.draw do
     resources :waitlists
     resources :bookmarks
   end
-
-  # match '/dashboard', :to=> 'tours#dashboard', :as => 'dashboard'
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root to: 'home#index'
