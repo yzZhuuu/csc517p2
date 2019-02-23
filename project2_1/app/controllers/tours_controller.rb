@@ -20,8 +20,13 @@ class ToursController < ApplicationController
     @book = Book.new
     @books = @tour.books
 
-    # @waitlist = Waitlist.new
+    @waitlist = Waitlist.new
     @waitlists = @tour.waitlists
+
+    @bookmark = Bookmark.new
+    @bookmarks = @tour.bookmarks
+
+    @flag = Bookmark.where(tour_id: @tour.id, user_id: current_user.id).any?
 
 
     authorize @tour

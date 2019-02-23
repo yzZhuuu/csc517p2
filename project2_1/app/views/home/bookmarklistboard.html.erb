@@ -3,6 +3,47 @@
 
   <h1>Bookmark List Page</h1>
 
+  <table class="table">
+
+    <thead>
+    <tr>
+      <th>Tour Name</th>
+      <th>User Info</th>
+      <th>Update Time</th>
+      <!--      <th colspan="2"></th>-->
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <% @tours.each do |t| %>
+
+      <% @bookmarks = t.bookmarks %>
+
+      <% @bookmarks.each do |bookmark| %>
+
+
+        <% if (bookmark.user_id == current_user.id) || (current_user.role.match(/admin/)) %>
+
+
+          <tr>
+            <th><%= t.name %></th>
+            <td><%= bookmark.user.name %></td>
+            <td><%= bookmark.updated_at %></td>
+          </tr>
+
+
+        <% end %>
+
+
+      <% end %>
+
+    <% end %>
+
+    </tbody>
+
+  </table>
+
 
   <!--      <ul class="nav navbar-nav pull-right">-->
   <!--        <ul class="nav navbar-nav pull-right">-->

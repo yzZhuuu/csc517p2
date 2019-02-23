@@ -1,0 +1,9 @@
+
+<%= form_for ([@tour, @bookmark]) do |form| %>
+  <div class="field">
+    <p><%= form.hidden_field :user_id, value: current_user.id %></p>
+  </div>
+  <div class="actions">
+    <p><%= form.submit "Bookmark" %></p>
+  </div>
+<% end %>

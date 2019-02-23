@@ -1,82 +1,90 @@
-
-
 <div class="container">
 
   <p><%= link_to 'Edit Tour', edit_tour_path(@tour) %> |
     <%= link_to 'Back to tour list', tours_path %></p>
 
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @tour.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @tour.description %>
-</p>
-
-
-<p>
-  <strong>Total Seats:</strong>
-  <%= @tour.total_seat %>
-</p>
+  <p id="notice"><%= notice %></p>
 
   <p>
-
-    <strong>Available Seats:</strong>
-
-    <%# @books.each do |b| %>
-      <%# @tour.aval_seat = @tour.aval_seat - b.book_seat %>
-    <%# end %>
-
-  <%= @tour.aval_seat %>
-
+    <strong>Name:</strong>
+    <%= @tour.name %>
   </p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @tour.price %>
-</p>
+  <p>
+    <strong>Description:</strong>
+    <%= @tour.description %>
+  </p>
 
-<p>
-  <strong>Booking Deadline:</strong>
-  <%= @tour.booking_deadline %>
-</p>
 
-<p>
-  <strong>Duration:</strong>
-  <%= @tour.start_date %>~<%= @tour.end_date %>
-</p>
+  <p>
+    <strong>Total Seats:</strong>
+    <%= @tour.total_seat %>
+  </p>
 
-<p>
-  <strong>Start Location:</strong>
-  <%= @tour.start_location %>
-</p>
+  <p>
+    <strong>Available Seats:</strong>
+    <%= @tour.aval_seat %>
+  </p>
 
-<p>
-  <strong>Contact:</strong>
-  <%= @tour.contact_info %>
-</p>
+  <p>
+    <strong>Price:</strong>
+    <%= @tour.price %>
+  </p>
 
-<!--<p>-->
-<!--  <strong>Available Seats:</strong>-->
+  <p>
+    <strong>Booking Deadline:</strong>
+    <%= @tour.booking_deadline %>
+  </p>
+
+  <p>
+    <strong>Duration:</strong>
+    <%= @tour.start_date %>~<%= @tour.end_date %>
+  </p>
+
+  <p>
+    <strong>Start Location:</strong>
+    <%= @tour.start_location %>
+  </p>
+
+  <p>
+    <strong>Contact:</strong>
+    <%= @tour.contact_info %>
+  </p>
+
+  <!--<p>-->
+  <!--  <strong>Available Seats:</strong>-->
   <%#= @tour.description %>
-<!--</p>-->
+  <!--</p>-->
 
   <p>
     <strong>Check Photos:</strong>
     <%= link_to 'link to photos ', tour_photos_path(@tour) %>
   </p>
 
+  <% if !@flag %>
 
-  <p><%= render 'books/form'%></p>
+    <p><%=render 'bookmarks/form' %></p>
+
+  <% end %>
+
+
+  <% @bookmarks.each do |bookmark| %>
+
+    <% if bookmark.user_id == current_user.id %>
+
+      <p><%= button_to 'Undo Bookmark', tour_bookmark_path(@tour, bookmark.id), method: :delete %></p>
+
+    <% end %>
+
+  <% end %>
+
+
+  <p><%= render 'books/form' %></p>
   <p><%= render 'books/book' %></p>
 
   <p><%= render 'waitlists/waitlist' %></p>
 
-  <p><%= render 'reviews/form',  tour: @tour%></p>
+  <p><%= render 'reviews/form', tour: @tour %></p>
   <p><%= render 'reviews/review' %></p>
 
 
