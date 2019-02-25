@@ -32,9 +32,17 @@
 en:
   helpers:
     label:
+      user:
+        id: "User ID"
       tour:
         name: "Tour Name"
         user: "Creator"
+        id: "Tour ID"
       review:
         user: "Wrote by"
         tour: "Tour Name"
+        id: "Review ID"
+      book:
+        id: "Book ID"
+      waitlist:
+        id: "Waitlist ID"

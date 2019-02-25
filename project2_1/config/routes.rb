@@ -5,11 +5,11 @@ Rails.application.routes.draw do
       resources :tours
       resources :reviews
       resources :books
-      # resources :bookmarks
       resources :waitlists
 
 
-      # root to: "users#index"
+
+       root to: "users#index"
   end
 
 

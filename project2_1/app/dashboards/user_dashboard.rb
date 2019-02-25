@@ -10,7 +10,8 @@ class UserDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     tours: Field::HasMany,
     reviews: Field::HasMany,
-    photos: Field::HasMany,
+    books: Field::HasMany,
+    waitlists: Field::HasMany,
     id: Field::Number,#.with_options(prefix: "USER",),
     email: Field::String,
     encrypted_password: Field::String,
@@ -50,7 +51,8 @@ class UserDashboard < Administrate::BaseDashboard
       :updated_at,
       :tours,
       :reviews,
-      :photos,
+      :books,
+      :waitlists,
   ].freeze
 
   # FORM_ATTRIBUTES
