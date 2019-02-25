@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :reviews
       resources :books
       resources :waitlists
+    #  resources :photos
 
 
 

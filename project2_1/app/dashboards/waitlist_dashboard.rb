@@ -26,6 +26,7 @@ class WaitlistDashboard < Administrate::BaseDashboard
       :user,
       :tour,
       :wait_seat,
+      :created_at,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES

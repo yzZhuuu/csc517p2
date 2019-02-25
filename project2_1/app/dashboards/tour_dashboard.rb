@@ -77,6 +77,7 @@ class TourDashboard < Administrate::BaseDashboard
     :name,
     :description,
     :total_seat,
+    :aval_seat,
     :price,
     :start_date,
     :end_date,

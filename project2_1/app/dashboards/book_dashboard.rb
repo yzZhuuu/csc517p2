@@ -25,8 +25,9 @@ class BookDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
       :id,
       :user,
-    :tour,
-    :book_seat,
+      :tour,
+      :book_seat,
+      :created_at,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -57,4 +58,5 @@ class BookDashboard < Administrate::BaseDashboard
   # def display_resource(book)
   #   "Book ##{book.id}"
   # end
+  #
 end
