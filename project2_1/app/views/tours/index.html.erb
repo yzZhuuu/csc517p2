@@ -23,6 +23,13 @@
   </thead>
 
   <tbody>
+
+  <%= form_tag tours_path, :method => 'get' do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search By Tour Name" %>
+    <%= submit_tag "Search", :name => nil %>
+  <% end %>
+
+
     <% @tours.each do |tour| %>
       <tr>
         <td><%= tour.name %></td>

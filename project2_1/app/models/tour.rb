@@ -15,6 +15,9 @@ class Tour < ApplicationRecord
   validates :total_seat, numericality: { only_integer: true, greater_than: 0 }
   validates :price, numericality: { greater_than: 0 }
 
+  def self.search(search)
+    where("name LIKE ? OR description LIKE ?", "%#{search}%", "%#{search}%")
+  end
 
 
 
