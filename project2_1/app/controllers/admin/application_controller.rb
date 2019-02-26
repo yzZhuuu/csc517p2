@@ -9,7 +9,7 @@ module Admin
     #http_basic_authenticate_with name: "god@admin.com", password: "password"
     before_action :authenticate
     def authenticate
-      authenticate_or_request_with_http_basic "Login to admin center" do |user_name, password|
+      authenticate_or_request_with_http_basic "Login to admin dashboard" do |user_name, password|
        user_name == "god@admin.com" && password == "password"
       end
     end

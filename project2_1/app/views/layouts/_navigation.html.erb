@@ -16,7 +16,7 @@
       <%= link_to 'Bookmark List', home_bookmarklistboard_path, class: 'navbar-brand'%>
         <%end %>
         <%if (current_user) && ( current_user.role.match(/admin/) )  %>
-      <%= link_to 'Admin Page', admin_users_path, class: 'navbar-brand'%>
+      <%= link_to 'Admin Dashboard', admin_users_path, class: 'navbar-brand'%>
         <%end %>>
 
     </div>

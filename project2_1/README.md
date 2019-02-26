@@ -1,48 +1,23 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-2.3.7
+* Ruby version: 2.3.7
+* Rails version: 5.2.2
 
 LOGIN:
 
+Home page: http://18.188.159.107:3003/
+
 Admin Account
 
-email: god@admin.com
+email: **god@admin.com**
 
-password: password
+password: **password**
 
-Agent/Customer account:
-You need to sign up by yourself!
+Agent/Customer account 
 
-Home page:
-http://localhost:3000
-
-Admin page:
-http://localhost:3000/admin
-
-Later server will post on AWS.
+You need to sign up by yourself or create  by admin!
 
 
 
 
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
