@@ -15,7 +15,10 @@ Rails.application.routes.draw do
 
 
   devise_for :users, path: 'users', controllers: {
+      omniauth_callbacks: 'users/omniauth_callbacks',
       registrations: "users/registrations"}
+
+  # get 'users/sign_in', to: 'sessions#create', as: :create_login
 
   resources :tours do
     resources :reviews

@@ -25,5 +25,7 @@
   </div>
 <% end %>
 
+<!--  <p><%#= google_sign_in_button 'Sign in with my Google account', proceed_to: create_login_url %></p>-->
+  <%= button_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %>
 <%= render "users/shared/links" %>
 </div>

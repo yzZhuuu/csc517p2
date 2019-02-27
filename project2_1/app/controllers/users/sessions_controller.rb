@@ -10,8 +10,13 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   # def create
-  #   super
-  # end
+  #   #   if user = authenticate_with_google
+  #   #     cookies.signed[:user_id] = user.id
+  #   #     redirect_to user
+  #   #   else
+  #   #     redirect_to new_user_session_url, alert: 'authentication_failed'
+  #   #   end
+  #   # end
 
   # DELETE /resource/sign_out
   # def destroy
@@ -24,4 +29,11 @@ class Users::SessionsController < Devise::SessionsController
    def configure_sign_in_params
      devise_parameter_sanitizer.permit(:sign_in, keys: [:role, :name])
    end
+end
+
+private
+def authenticate_with_google
+  if flash[:google_sign_in_token].present?
+    User.find_by google_id: GoogleSignIn::Identity.new(flash[:google_sign_in_token]).user_id
+  end
 end
