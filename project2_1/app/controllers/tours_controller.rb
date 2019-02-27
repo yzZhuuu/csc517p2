@@ -77,15 +77,55 @@ class ToursController < ApplicationController
   # PATCH/PUT /tours/1.json
   def update
     authorize @tour
-    respond_to do |format|
-      if @tour.update(tour_params)
-        format.html {redirect_to @tour, notice: 'Tour was successfully updated.'}
-        format.json {render :show, status: :ok, location: @tour}
-      else
-        format.html {render :edit}
-        format.json {render json: @tour.errors, status: :unprocessable_entity}
+
+    old_total_seat = @tour.total_seat
+    old_aval_seat = @tour.aval_seat
+
+    @tour.update(tour_params)
+
+    if (@tour.total_seat >= old_total_seat)
+      respond_to do |format|
+        if Tour.update(@tour.id, :aval_seat => old_aval_seat + (@tour.total_seat - old_total_seat))
+          format.html {redirect_to tour_path(@tour), notice: 'Tour updated 1. '}
+          # format.json { render :show, status: :ok, location: @tour }
+        else
+          # format.html {render :edit}
+          # format.json { render json: @tour.errors, status: :unprocessable_entity }
+        end
       end
+
+    else
+
+      if(old_aval_seat - (old_total_seat - @tour.total_seat) >= 0)
+        respond_to do |format|
+          if Tour.update(@tour.id, :aval_seat => old_aval_seat - (old_total_seat - @tour.total_seat))
+            format.html {redirect_to tour_path(@tour), notice: 'Tour updated 2.'}
+            # format.json { render :show, status: :ok, location: @tour }
+          else
+            # format.html {render :edit}
+            # format.json { render json: @tour.errors, status: :unprocessable_entity }
+          end
+        end
+
+      else
+        Tour.update(@tour.id, :total_seat => old_total_seat)
+
+
+        respond_to do |format|
+            format.html {redirect_to edit_tour_path(@tour), notice: 'Entered total seats can not less the current available seats.'}
+        end
+
+
+
+      end
+
+
+
+
     end
+
+
+
   end
 
   # DELETE /tours/1

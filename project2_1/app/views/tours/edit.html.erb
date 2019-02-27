@@ -1,8 +1,10 @@
 <div class="container">
-<h1>Editing Tour</h1>
+  <p id="notice"><%= notice %></p>
 
-<%= render 'form', tour: @tour %>
+  <h1>Editing Tour</h1>
 
-<p><%= link_to 'Show', @tour %> |
-  <%= link_to 'Back', tours_path %></p>
+  <%= render 'form', tour: @tour %>
+
+  <p><%= link_to 'Show', @tour %> |
+    <%= link_to 'Back', tours_path %></p>
 </div>

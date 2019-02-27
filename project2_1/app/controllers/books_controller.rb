@@ -175,8 +175,6 @@ class BooksController < ApplicationController
 
     bookOld = @book.book_seat
 
-
-
     @book.update(book_params)
 
     if (@book.book_seat - bookOld) > @tour.aval_seat
