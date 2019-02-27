@@ -23,7 +23,7 @@
       <% @bookmarks.each do |bookmark| %>
 
 
-        <% if (bookmark.user_id == current_user.id) || (current_user.role.match(/admin/)) %>
+        <% if (bookmark.user_id == current_user.id) || (current_user.role.match(/admin/i)) %>
 
 
           <tr>
