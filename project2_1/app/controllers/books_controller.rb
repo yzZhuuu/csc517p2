@@ -19,11 +19,6 @@ class BooksController < ApplicationController
 
       # update the aval_seast in the tour
       if Tour.update(@tour.id, :aval_seat => @tour.aval_seat, :user_id => @tour.user_id)
-
-        # respond_to do |format|
-        #
-        #   format.html {redirect_to @tour, notice: 'seats aval updated.'}
-        # end
         flash.now[:notice] = 'Available Seats updated!'
       else
         flash.now[:notice] = 'Error occurs!'
@@ -49,7 +44,6 @@ class BooksController < ApplicationController
       if @book.choice == 'nothing'
         respond_to do |format|
           format.html {redirect_to @tour, notice: 'Not enough available seats, please pick an option.'}
-          # format.json { render :show, status: :created, location: @tour }
         end
 
         # if wait is selected, add the booking info into waitlist table
@@ -61,12 +55,10 @@ class BooksController < ApplicationController
         if @waitlist2.save
           respond_to do |format|
             format.html {redirect_to @tour, notice: 'Option: wait picked. All booked seats move to the wait list'}
-            # format.json { render :show, status: :created, location: @tour }
           end
         else
           respond_to do |format|
             format.html {redirect_to @tour, notice: 'Option: wait picked. Error occurs'}
-            # format.json { render :show, status: :created, location: @tour }
           end
         end
 
@@ -79,12 +71,9 @@ class BooksController < ApplicationController
 
         if @waitlist1.save
           flash.now[:notice] = 'Option: continue picked. Booking aval seats and move the rest to the waitlist'
-          # format.json { render :show, status: :created, location: @tour }
 
         else
           flash.now[:notice] = 'Option: continue picked. Error occurs'
-          # format.json { render :show, status: :created, location: @tour }
-
         end
 
         # update book table
@@ -92,22 +81,18 @@ class BooksController < ApplicationController
 
         if @book.save
           flash.now[:notice] = 'Available Seats updated!'
-          # format.json { render :show, status: :created, location: @tour }
         else
           flash.now[:notice] = 'Error occurs!'
-          # format.json { render json: @book.errors, status: :unprocessable_entity }
         end
 
         # update tour table for aval seat
         if Tour.update(@tour.id, :aval_seat => 0)
           respond_to do |format|
             format.html {redirect_to @tour, notice: 'Available Seats updated!'}
-            # format.json { render :show, status: :created, location: @tour }
           end
         else
           respond_to do |format|
             format.html {redirect_to @tour, notice: 'Error occurs!'}
-            # format.json { render :show, status: :created, location: @tour }
           end
         end
 
@@ -115,7 +100,6 @@ class BooksController < ApplicationController
       else
         respond_to do |format|
           format.html {redirect_to @tour, notice: 'Option: cancel picked. Booking operation cancelled'}
-          # format.json { render :show, status: :created, location: @tour }
         end
 
       end
@@ -127,7 +111,6 @@ class BooksController < ApplicationController
   def destroy
 
     @tour = Tour.find(params[:tour_id])
-
     @book = Book.find(params[:id])
 
     authorize @book
@@ -188,9 +171,11 @@ class BooksController < ApplicationController
     @tour = Tour.find(params[:tour_id])
     @book = Book.find(params[:id])
 
+    authorize @book
+
     bookOld = @book.book_seat
 
-    authorize @book
+
 
     @book.update(book_params)
 
@@ -241,13 +226,9 @@ class BooksController < ApplicationController
       end
 
       respond_to do |format|
-
         format.html {redirect_to @tour, notice: 'Booking info updated.'}
-
       end
-
     end
-
 
   end
 

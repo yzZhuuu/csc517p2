@@ -13,7 +13,6 @@ class ReviewsController < ApplicationController
       redirect_to @tour
     end
 
-
   end
 
   def edit
@@ -32,10 +31,8 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.update(review_params)
         format.html { redirect_to tour_path(@tour), notice: 'Review was successfully updated.' }
-        # format.json { render :show, status: :ok, location: @tour }
       else
-        # format.html { render :edit }
-        # format.json { render json: @tour.errors, status: :unprocessable_entity }
+        format.html { render :edit }
       end
     end
   end
@@ -50,7 +47,6 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to @tour, notice: 'Review was successfully destroyed.' }
-      # format.json { head :no_content }
     end
 
   end

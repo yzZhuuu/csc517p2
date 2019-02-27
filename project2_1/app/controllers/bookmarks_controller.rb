@@ -16,12 +16,10 @@ class BookmarksController < ApplicationController
   end
 
 
-
   def destroy
     @tour = Tour.find(params[:tour_id])
 
     @bookmark = Bookmark.find(params[:id])
-    # authorize @review
 
     @bookmark.destroy
 

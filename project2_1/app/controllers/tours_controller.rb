@@ -19,6 +19,7 @@ class ToursController < ApplicationController
   def show
 
     @tour = Tour.find(params[:id])
+    authorize @tour
 
     @review = Review.new
     @reviews = @tour.reviews
@@ -35,7 +36,7 @@ class ToursController < ApplicationController
     @flag = Bookmark.where(tour_id: @tour.id, user_id: current_user.id).any?
 
 
-    authorize @tour
+
   end
 
   # GET /tours/new
@@ -54,11 +55,12 @@ class ToursController < ApplicationController
 
 
     @tour = Tour.new(tour_params)
-    @tour.user = current_user
+    authorize @tour
 
+    @tour.user = current_user
     @tour.aval_seat = @tour.total_seat
 
-    authorize @tour
+
 
     respond_to do |format|
       if @tour.save
