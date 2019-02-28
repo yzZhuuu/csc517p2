@@ -133,6 +133,7 @@ class BooksController < ApplicationController
         Tour.update(@tour.id, :aval_seat => (@tour.aval_seat + @book.book_seat))
 
         Waitlist.destroy(w.id)
+        UserMailer.with(user: w.user_id).book_confirm_email.deliver_later
 
         flag = false
 
@@ -210,6 +211,7 @@ class BooksController < ApplicationController
           Tour.update(@tour.id, :aval_seat => (@tour.aval_seat + @book.book_seat))
 
           Waitlist.destroy(w.id)
+          UserMailer.with(user: w.user_id).book_confirm_email.deliver_later
 
           flag = false
 
