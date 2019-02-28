@@ -15,6 +15,9 @@
         <%= link_to 'Wait List', home_waitlistboard_path, class: 'navbar-brand' %>
         <%= link_to 'Booking List', home_booklistboard_path, class: 'navbar-brand' %>
         <%= link_to 'Bookmark List', home_bookmarklistboard_path, class: 'navbar-brand' %>
+
+        <% end %>
+      <% if (current_user) && (current_user.role.match(/admin|agent/i)) %>
         <%= link_to 'My Tour', home_agenttourlist_path, class: 'navbar-brand' %>
       <% end %>
       <% if (current_user) && (current_user.role.match(/admin/i)) %>
