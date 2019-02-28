@@ -10,12 +10,12 @@
       </button>
       <%= link_to 'Home', root_path, class: 'navbar-brand' %>
       <%= link_to 'Tour List', tours_path, class: 'navbar-brand'%>
-        <%if (current_user) && ( current_user.role.match(/admin|customer/) )  %>
+        <%if (current_user) && ( current_user.role.match(/admin|customer/i) )  %>
       <%= link_to 'Wait List', home_waitlistboard_path, class: 'navbar-brand'%>
       <%= link_to 'Booking List', home_booklistboard_path, class: 'navbar-brand'%>
       <%= link_to 'Bookmark List', home_bookmarklistboard_path, class: 'navbar-brand'%>
         <%end %>
-        <%if (current_user) && ( current_user.role.match(/admin/) )  %>
+        <%if (current_user) && ( current_user.role.match(/admin/i) )  %>
       <%= link_to 'Admin Dashboard', admin_users_path, class: 'navbar-brand'%>
         <%end %>>
 

@@ -11,7 +11,7 @@
   <tbody>
   <% @waitlists.each do |w| %>
 
-    <% if (w.user_id == current_user.id) || (current_user.role.match(/admin/)) %>
+    <% if (w.user_id == current_user.id) || (current_user.role.match(/admin/i)) %>
 
       <tr>
         <td><%= w.wait_seat %></td>
