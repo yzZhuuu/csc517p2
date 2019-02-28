@@ -6,12 +6,21 @@ class ToursController < ApplicationController
   # GET /tours.json
   def index
     @tours = Tour.all
-
     if params[:search]
       @tours = Tour.search(params[:search]).order("created_at DESC")
     else
       @tours = Tour.all.order('created_at DESC')
     end
+    # @filterrific = initialize_filterrific(
+    #     Tour,
+    #     params[:filterrific]
+    # ) or return
+    # @tours = @filterrific.find.page(params[:page])
+    #
+    # respond_to do |format|
+    #   format.html
+    #   format.js
+    # end
   end
 
   # GET /tours/1
@@ -151,3 +160,4 @@ class ToursController < ApplicationController
     params.require(:tour).permit(:name, :description, :total_seat, :aval_seat, :user_id, :price, :booking_deadline, :start_date, :end_date, :start_location, :contact_info)
   end
 end
+

@@ -33,4 +33,5 @@ Rails.application.routes.draw do
   get 'home/waitlistboard' => 'home#waitlistboard'
   get 'home/booklistboard' => 'home#booklistboard'
   get 'home/bookmarklistboard' => 'home#bookmarklistboard'
+  get 'home/agenttourlist' => 'home#agenttourlist'
 end
