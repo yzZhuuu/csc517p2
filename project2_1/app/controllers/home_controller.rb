@@ -20,4 +20,9 @@ class HomeController < ApplicationController
 
   end
 
+  def agenttourlist
+    @tours = Tour.all
+
+  end
+
 end

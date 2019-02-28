@@ -1,4 +1,17 @@
 class Tour < ApplicationRecord
+#class Tour < ActiveRecord::Base
+  # include Filterable
+  #
+  # filterrific(
+  #     default_filter_params: { sorted_by: 'created_at_desc' },
+  #     available_filters: [
+  #         :sorted_by,
+  #         :search_query,
+  #         :with_country_id,
+  #         :with_created_at_gte
+  #     ]
+  #)
+
   belongs_to :user
   has_many :reviews
   has_many :photos
@@ -18,6 +31,10 @@ class Tour < ApplicationRecord
   def self.search(search)
     where("name LIKE ? OR description LIKE ?", "%#{search}%", "%#{search}%")
   end
+
+  # scope :status, -> (status) { where status: status }
+  # scope :location, -> (location_id) { where location_id: location_id }
+  # scope :starts_with, -> (name) { where("name like ?", "#{name}%")}
 
 
 

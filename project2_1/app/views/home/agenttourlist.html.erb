@@ -1,0 +1,74 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+
+  <h1>Book Table</h1>
+  <table class="table">
+
+    <thead>
+    <tr>
+      <th>List By</th>
+      <th>Tour Name</th>
+      <th>Booked Seats</th>
+      <th>Booked By</th>
+      <th>Update Time</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <% @tours.each do |t| %>
+      <% if (t.user_id == current_user.id) || (current_user.role.match(/admin/i)) %>
+      <% @books = t.books %>
+      <% @books.each do |b| %>
+          <tr>
+            <td><%= t.user.name %></td>
+            <th><%= t.name %></th>
+            <td><%= b.book_seat %></td>
+
+            <td><%= b.user.name %></td>
+            <td><%= b.updated_at %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    </tbody>
+
+  </table>
+
+
+  <h1>Bookmark Table</h1>
+  <table class="table">
+
+    <thead>
+    <tr>
+      <th>List By</th>
+      <th>Tour Name</th>
+      <th>Bookmarked By</th>
+      <th>Update Time</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <% @tours.each do |t| %>
+      <% if (t.user_id == current_user.id) || (current_user.role.match(/admin/i)) %>
+        <% @bookmarks = t.bookmarks %>
+        <% @bookmarks.each do |bm| %>
+          <tr>
+            <td><%= t.user.name %></td>
+            <th><%= t.name %></th>
+
+            <td><%= bm.user.name %></td>
+            <td><%= bm.updated_at %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    </tbody>
+
+  </table>
+
+  <p><%= link_to 'Back', root_path %></p>
+</div>

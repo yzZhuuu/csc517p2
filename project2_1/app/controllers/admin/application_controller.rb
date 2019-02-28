@@ -6,22 +6,11 @@
 # you're free to overwrite the RESTful controller actions.
 module Admin
   class ApplicationController < Administrate::ApplicationController
+    # before_action :authenticate_user!
+    # include Administrate::Punditize
     #http_basic_authenticate_with name: "god@admin.com", password: "password"
     # before_action :authenticate
-    #
-    # def authenticate
-    #
-    #   @auser = Tour.find(params[current_user.id])
-    #
-    #   if @auser.email != 'god@admin.com'
-    #     respond_to do |format|
-    #       format.html { redirect_to root_path, method: :get,notice: 'user is not authorized.' }
-    #       # format.json { head :no_content }
-    #     end
-    #
-    #   end
-    #
-    #
+
     # end
 
     # Override this value to specify the number of elements to display at a time
