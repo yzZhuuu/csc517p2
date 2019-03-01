@@ -1,6 +1,6 @@
 # CSC 517 (601) - Object Oriented Design and Development
 ## Project 2: Tour Management System
-###Team_25
+### Team_25
 * Hao Lu (hlu6@ncsu.edu)
 * Shuai Wang (swang28@ncsu.edu)
 * Yuzhe Zhu (yzhu45@ncsu.edu)
@@ -24,13 +24,13 @@ http://ec2-18-188-159-107.us-east-2.compute.amazonaws.com:3003/
 
     Password:   password
 
-###User Guide
+### User Guide
 There are three (3) types of users in the system:
 * Admin
 * Agents
 * Customers
 
-####Admin
+#### Admin
 * Login 
     * Name: GodOfWeb
     * Email: god@admin.com
@@ -66,7 +66,7 @@ There are three (3) types of users in the system:
     * Similarly, you could view the book list and wait list by click the link **"Books"** and **"Waitlists"** on the left bar.
 * _**All the functions except view/create/edit/delete users, admin have the authorization directly to view/create/edit/delete from the home page. The Admin Dashboard is just help admin to control the web more organized.**_ 
     * You also have access to **Agent Center** and **Customer Center** , you can view all the customer and all agent information during each center instead of just view the information by yourself.
-####Agent
+#### Agent
 * Login 
     * Fast account
         * Name: Agent1
@@ -99,7 +99,7 @@ There are three (3) types of users in the system:
 * Agent should be able to delete his own account.
     * You could delete your account by click the link **"Edit Profile"** right of your emails to go to your profile, and then click the button **"Cancel My Account"**.
   
-####Customer
+#### Customer
 * Login 
     * Fast account
         * Name: Customer1
@@ -136,7 +136,7 @@ There are three (3) types of users in the system:
     * Go the **Customer Center** page by Click the link **"Customer Center"**.
     * You can view all the booked/bookmarked/waited information create by you. 
 
-####Tours Features
+#### Tours Features
 * ID
 * Name
 * Description
@@ -159,7 +159,7 @@ There are three (3) types of users in the system:
 
 
 
-###Test
+### Test
 
     
 
