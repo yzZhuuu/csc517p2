@@ -1,27 +1,27 @@
 <div class="container">
 
+  <p id="notice"><%= notice %></p>
 
-  <p><%= link_to 'Edit Tour', edit_tour_path(@tour) %> |
+  <p>
+    <% if (current_user) && (current_user.role.match(/admin|agent/i)) %>
+
+      <% if !((@tour.status == 'completed') && (current_user.role.match(/agent/i))) %>
+        <%= link_to 'Edit Tour', edit_tour_path(@tour) %>
+      <% end %>
+
+    <% end %>
     <%= link_to 'Back to All Tour List', tours_path %>
-    <%if(current_user.role.match(/agent|admin/i)) %>
-    |<%= link_to 'Back to Agent Center', home_agenttourlist_path %>
-      <%end%>
-    <%if(current_user.role.match(/customer|admin/i)) %>
-      |<%= link_to 'Back to Customer Center', home_customercenter_path %>
-    <%end%>
+    <% if (current_user.role.match(/agent|admin/i)) %>
+      <%= link_to 'Back to Agent Center', home_agenttourlist_path %>
+    <% end %>
+    <% if (current_user.role.match(/customer|admin/i)) %>
+      <%= link_to 'Back to Customer Center', home_customercenter_path %>
+    <% end %>
   </p>
 
 
-  <p id="notice"><%= notice %></p>
 
-  <% if (current_user) && (current_user.role.match(/admin|agent/i)) %>
 
-    <% if !((@tour.status == 'completed') && (current_user.role.match(/agent/i)))%>
-        <p><%= link_to 'Edit Tour', edit_tour_path(@tour) %></p>
-      <%end %>
-
-  <% end %>
-  <p><%= link_to 'Back to tour list', tours_path %></p>
 
   <p>
     <strong>Tour ID:</strong>
@@ -71,13 +71,13 @@
 
 
   <p>
-  <strong>Itinerary:</strong>
-  <%= render 'locations/location' %>
+    <strong>Itinerary:</strong>
+    <%= render 'locations/location' %>
   </p>
-  <%if (current_user) && ( current_user.role.match(/admin|agent/i) )  %>
-  <strong>Extend Itinerary:</strong>
-  <%= render 'locations/form'%>
-  <%end%>
+  <% if (current_user) && (current_user.role.match(/admin|agent/i)) %>
+    <strong>Extend Itinerary:</strong>
+    <%= render 'locations/form' %>
+  <% end %>
 
   <p>
     <strong>Contact:</strong>

@@ -30,6 +30,9 @@ class ToursController < ApplicationController
     @tour = Tour.find(params[:id])
     authorize @tour
 
+    # @country = @tour.country
+    # @state = @tour.state
+
     @location = Location.new
     @locations = @tour.locations
 
@@ -44,6 +47,7 @@ class ToursController < ApplicationController
 
     @bookmark = Bookmark.new
     @bookmarks = @tour.bookmarks
+
 
     @flag = Bookmark.where(tour_id: @tour.id, user_id: current_user.id).any?
 

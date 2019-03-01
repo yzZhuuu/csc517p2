@@ -28,6 +28,10 @@ class Tour < ApplicationRecord
 
   validates :total_seat, numericality: { only_integer: true, greater_than: 0 }
   validates :price, numericality: { greater_than: 0 }
+  validates :start_location, format: { with: /\A([a-zA-Z]+(?:[\s-]*[a-zA-Z]+)?)+\z/, message: 'format is not correct'}
+
+  # validates :country, format: { with: /\A(([a-zA-Z]+\ ?)\ ?\;?\ ?)+\z/, message: 'country format is not correct'}
+  # validates :state, format: { with: /\A(([a-zA-Z]+\ ?)\,?\ ?\;?\ ?)+\z/, message: 'state format is not correct'}
 
   def self.search(search)
     where("name LIKE ? OR description LIKE ?", "%#{search}%", "%#{search}%")
