@@ -30,6 +30,9 @@ class ToursController < ApplicationController
     @tour = Tour.find(params[:id])
     authorize @tour
 
+    @location = Location.new
+    @locations = @tour.locations
+
     @review = Review.new
     @reviews = @tour.reviews
 

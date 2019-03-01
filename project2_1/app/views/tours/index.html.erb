@@ -53,7 +53,7 @@
 
 <br>
   <%if (current_user) && ( current_user.role.match(/admin|agent/i) )  %>
-      <p><%= link_to 'Create a new tour', new_tour_path %></p>
+    <h3><strong><%= link_to 'Create a new tour', new_tour_path%></strong></h3>
     <% end %>
 <%#= link_to 'Back to Welcome Page', root_path %>
 <%#= link_to 'Dash Board', tours_dashboard_path %>

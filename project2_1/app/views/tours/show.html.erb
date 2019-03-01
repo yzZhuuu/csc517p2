@@ -59,6 +59,16 @@
     <%= @tour.start_location %>
   </p>
 
+
+  <p>
+  <strong>Itinerary:</strong>
+  <%= render 'locations/location' %>
+  </p>
+  <%if (current_user) && ( current_user.role.match(/admin|agent/i) )  %>
+  <strong>Extend Itinerary:</strong>
+  <%= render 'locations/form'%>
+  <%end%>
+
   <p>
     <strong>Contact:</strong>
     <%= @tour.contact_info %>

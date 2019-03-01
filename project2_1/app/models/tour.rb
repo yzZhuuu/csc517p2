@@ -14,6 +14,7 @@ class Tour < ApplicationRecord
 
   belongs_to :user
   has_many :reviews
+  has_many :locations
   has_many :photos
   has_many :books
   has_many :waitlists
