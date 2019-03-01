@@ -20,9 +20,6 @@
   </p>
 
 
-
-
-
   <p>
     <strong>Tour ID:</strong>
     <%= @tour.id %>
@@ -69,15 +66,51 @@
     <%= @tour.start_location %>
   </p>
 
-
   <p>
-    <strong>Itinerary:</strong>
-    <%= render 'locations/location' %>
-  </p>
-  <% if (current_user) && (current_user.role.match(/admin|agent/i)) %>
-    <strong>Extend Itinerary:</strong>
-    <%= render 'locations/form' %>
+    <strong>Tour Itinerary:</strong>
+
+    <% @state.each_with_index do |s, i| %>
+
+      <% if (s.include?(',')) %>
+
+        <% s.split(',').each do |ss| %>
+
+
+        <p><%= @country[i] %>, <%= ss %></p>
+
+      <% end %>
+
+    <% else %>
+
+      <p><%= @country[i] %>, <%= s %></p>
+
+    <% end %>
+
+
   <% end %>
+
+
+  </p>
+
+<!--  <p>-->
+<!--    <strong>Country:</strong>-->
+    <%#= @tour.country %>
+<!--  </p>-->
+
+<!--  <p>-->
+<!--    <strong>State/Province:</strong>-->
+    <%#= @tour.state %>
+<!--  </p>-->
+
+
+  <!--  <p>-->
+  <!--    <strong>Itinerary:</strong>-->
+  <%#= render 'locations/location' %>
+  <!--  </p>-->
+  <%# if (current_user) && (current_user.role.match(/admin|agent/i)) %>
+  <!--    <strong>Extend Itinerary:</strong>-->
+  <%#= render 'locations/form' %>
+  <%# end %>
 
   <p>
     <strong>Contact:</strong>

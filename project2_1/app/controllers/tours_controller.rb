@@ -30,11 +30,9 @@ class ToursController < ApplicationController
     @tour = Tour.find(params[:id])
     authorize @tour
 
-    # @country = @tour.country
-    # @state = @tour.state
+    @country = @tour.country.split(';')
+    @state = @tour.state.split(';')
 
-    @location = Location.new
-    @locations = @tour.locations
 
     @review = Review.new
     @reviews = @tour.reviews
@@ -78,6 +76,19 @@ class ToursController < ApplicationController
     # @tour.status = 'future'
 
 
+    # country_list = @tour.country.split(';')
+    # state_list = @tour.state.split(';')
+    #
+    # if (country_list.length != state_list.length)
+    #
+    #   respond_to do |format|
+    #     format.html {render :new}
+    #     format.json {render json: @tour.errors, status: :unprocessable_entity}
+    #
+    #   end
+    #
+    # else
+
     respond_to do |format|
       if @tour.save
         format.html {redirect_to @tour, notice: 'Tour was successfully created.'}
@@ -87,6 +98,8 @@ class ToursController < ApplicationController
         format.json {render json: @tour.errors, status: :unprocessable_entity}
       end
     end
+
+    # end
   end
 
   # PATCH/PUT /tours/1
@@ -168,7 +181,9 @@ class ToursController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def tour_params
-    params.require(:tour).permit(:name, :description, :total_seat, :aval_seat, :user_id, :price, :booking_deadline, :start_date, :end_date, :start_location, :contact_info, :status)
+    params.require(:tour).permit(:name, :description, :total_seat, :aval_seat, :user_id, :price, :booking_deadline,
+                                 :start_date, :end_date, :start_location, :contact_info, :status,
+                                 :country, :state)
   end
 end
 
