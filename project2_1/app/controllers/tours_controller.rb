@@ -30,9 +30,6 @@ class ToursController < ApplicationController
     @tour = Tour.find(params[:id])
     authorize @tour
 
-    @location = Location.new
-    @locations = @tour.locations
-
     @review = Review.new
     @reviews = @tour.reviews
 
@@ -55,16 +52,18 @@ class ToursController < ApplicationController
   def new
     @tour = Tour.new
     authorize @tour
+
   end
 
   # GET /tours/1/edit
   def edit
+
+
   end
 
   # POST /tours
   # POST /tours.json
   def create
-
 
     @tour = Tour.new(tour_params)
     authorize @tour

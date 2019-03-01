@@ -66,6 +66,7 @@ There are three (3) types of users in the system:
     * Similarly, you could view the book list and wait list by click the link **"Books"** and **"Waitlists"** on the left bar.
 * _**All the functions except view/create/edit/delete users, admin have the authorization directly to view/create/edit/delete from the home page. The Admin Dashboard is just help admin to control the web more organized.**_ 
     * You also have access to **Agent Center** and **Customer Center** , you can view all the customer and all agent information during each center instead of just view the information by yourself.
+    * **Always, you are recommend to view/create/edit/delete tours and bookings under the **All Tour Page****
 #### Agent
 * Login 
     * Fast account
@@ -144,17 +145,19 @@ There are three (3) types of users in the system:
     * When your seat is ready for you, the app will move you from waitlist to booked, you could check your email (linked with google) about the information.
 #### Tours Features
 * ID
-* Name
+* Tour Name
+* List By
 * Description
-* Seats - total seats, available seats
-* Price
-* Photos 
-* Booking deadline
+* Total seats
+* Available seats
 * Duration (from - to dates)
 * Start location (where the tour starts from)
 * Tour itinerary -  A list of places where the said tour will take you 
     * include at least one country; a tour can span multiple countries
     * include at least one state/province within each country; a tour can span multiple states
+* Photos 
+* Price
+* Booking deadline
 * Contact information for tour operator
 * Status (In Future / Completed/ Cancelled).
 * Bookmark function
