@@ -41,13 +41,13 @@ class BooksController < ApplicationController
 
       # Based on the choice, do different operation
       # if nothing is selected, tell user to choose a option and redirect to the page again
-      if @book.choice == 'nothing'
+      if @book.choice == 'nothing: Book the seats'
         respond_to do |format|
           format.html {redirect_to @tour, notice: 'Not enough available seats, please pick an option.'}
         end
 
         # if wait is selected, add the booking info into waitlist table
-      elsif @book.choice == 'wait'
+      elsif @book.choice == 'wait: Add customer to waitlist along with requested seats'
 
         @waitlist2 = Waitlist.new
         @waitlist2 = @tour.waitlists.new(:wait_seat => @book.book_seat, :user_id => current_user.id)
@@ -63,7 +63,7 @@ class BooksController < ApplicationController
         end
 
         # if continue is selected, booking the aval seat and move the rest to waitlist tble
-      elsif @book.choice == 'continue'
+      elsif @book.choice == 'continue: Book the seats available; and add remaining seats to waitlist'
 
         @waitlist1 = Waitlist.new
         # update waitlist table

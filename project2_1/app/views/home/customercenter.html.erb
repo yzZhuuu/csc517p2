@@ -1,0 +1,128 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+
+<!--  <h1>My Bookmark List</h1>-->
+  <% if(current_user.role.match(/admin/i)) %>
+  <h1>Bookmark List</h1>
+    <%else %>
+    <h1>My Bookmark List</h1>
+  <%end%>
+
+  <table class="table">
+
+    <thead>
+    <tr>
+      <th>List By</th>
+      <th>Tour Name</th>
+      <th>Bookmarked By</th>
+      <th>Update Time</th>
+      <!--      <th colspan="2"></th>-->
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @tours.each do |t| %>
+      <% @bookmarks = t.bookmarks %>
+      <% @bookmarks.each do |bookmark| %>
+        <% if (bookmark.user_id == current_user.id) || (current_user.role.match(/admin/i)) %>
+          <tr>
+            <td><%= t.user.name %></td>
+            <th><%= t.name %></th>
+            <td><%= bookmark.user.name %></td>
+            <td><%= bookmark.updated_at %></td>
+            <td><%= link_to 'Show', t %></td>
+            <td><%= button_to 'Undo Bookmark', tour_bookmark_path(t, bookmark.id), method: :delete %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    <% end %>
+    </tbody>
+  </table>
+
+
+<!--  <h1>My Book List</h1>-->
+
+  <% if(current_user.role.match(/admin/i)) %>
+    <h1>Book List</h1>
+  <%else %>
+    <h1>My Book List</h1>
+  <%end%>
+
+<table class="table">
+
+  <thead>
+  <tr>
+    <th>List By</th>
+    <th>Tour Name</th>
+    <th>Booked Seats</th>
+    <th>Booked By</th>
+    <th>Update Time</th>
+    <!--      <th colspan="2"></th>-->
+  </tr>
+  </thead>
+
+  <tbody>
+
+  <% @tours.each do |t| %>
+    <% @books = t.books %>
+    <% @books.each do |b| %>
+      <% if (b.user_id == current_user.id) || (current_user.role.match(/admin/i)) %>
+        <tr>
+          <td><%= t.user.name %></td>
+          <th><%= t.name %></th>
+          <td><%= b.book_seat %></td>
+          <td><%= b.user.name %></td>
+          <td><%= b.updated_at %></td>
+          <td><%= link_to 'Show', t %></td>
+          <td><%= link_to "edit", edit_tour_book_path(b.tour_id, b.id) %></td>
+          <td><%= link_to 'Destroy', tour_book_path(b.tour_id, b.id), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>
+
+<!--  <h1>My Wait List</h1>-->
+
+  <% if(current_user.role.match(/admin/i)) %>
+    <h1>Wait List</h1>
+  <%else %>
+    <h1>My Wait List</h1>
+  <%end%>
+
+  <table class="table">
+
+    <thead>
+    <tr>
+      <th>List By</th>
+      <th>Tour Name</th>
+      <th>Waited seats</th>
+      <th>Waited By</th>
+      <th>Update Time</th>
+      <!--      <th colspan="2"></th>-->
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @tours.each do |t| %>
+      <% @waitlists = t.waitlists %>
+      <% @waitlists.each do |w| %>
+        <% if (w.user_id == current_user.id) || (current_user.role.match(/admin/i)) %>
+          <tr>
+            <td><%= t.user.name %></td>
+            <th><%= t.name %></th>
+            <td><%= w.wait_seat %></td>
+            <td><%= w.user.name %></td>
+            <td><%= w.updated_at %></td>
+            <td><%= link_to 'Show', t %></td>
+            <td><%= link_to 'Destroy', tour_waitlist_path(w.tour_id, w.id), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    <% end %>
+    </tbody>
+  </table>
+
+  <p><%= link_to 'Back to Home', root_path %></p>
+</div>

@@ -26,12 +26,14 @@ Rails.application.routes.draw do
     resources :books
     resources :waitlists
     resources :bookmarks
+    resources :locations
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root to: 'home#index'
-  get 'home/waitlistboard' => 'home#waitlistboard'
-  get 'home/booklistboard' => 'home#booklistboard'
-  get 'home/bookmarklistboard' => 'home#bookmarklistboard'
+  # get 'home/waitlistboard' => 'home#waitlistboard'
+  # get 'home/booklistboard' => 'home#booklistboard'
+  # get 'home/bookmarklistboard' => 'home#bookmarklistboard'
   get 'home/agenttourlist' => 'home#agenttourlist'
+  get 'home/customercenter' => 'home#customercenter'
 end

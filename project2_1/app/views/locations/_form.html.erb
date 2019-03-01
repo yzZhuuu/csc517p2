@@ -1,0 +1,11 @@
+<%= form_for ([@tour, @location]) do |form| %>
+
+   <%= form.label :country %>
+    <%= form.text_field :country %>
+  <%= form.label :state %>
+ <%= form.text_field :state %>
+
+      <%= form.submit "add a location" %>
+
+
+<% end %>
