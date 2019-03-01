@@ -113,6 +113,7 @@ There are three (3) types of users in the system:
     * You can find the **search bar** to search the key word of the tours above the list in the All Tour page.
 * View information about tours
     * Go to the **Tour Details Page** by click the link **"show"** right after a tour in the tour list.
+    * Under **Tour Details Page** Click the link **"link to photo"** to view the photo.
 * Bookmark tours they are interested in.
     * In the Tour Details page, you are be able to make a bookmark by click the button **"Bookmark"**.
     * You can cancel a bookmark by click the button **"Undo Bookmark".**   
@@ -127,7 +128,7 @@ There are three (3) types of users in the system:
 * Cancel a booking completely or cancel a few seats from a booking done previously.
     * You can cancel the booked seat by click the link **"Destroy"** right after the book on the booklist.
 * Submit a review for a tour that that customer has already taken. 
-    * After you booked a tour, you are able to write the review under the Tour Detail page.
+    * After you booked a tour, you are able to write the review with **subject** and **message** under the **Tour Detail page**.
 * Edit or delete a review they previously submitted.
     * You can edit or delete your review anytime by click the link **"Edit"** or **"Delete"** under your review.
 * Customer should be able to delete his own account.
@@ -135,7 +136,12 @@ There are three (3) types of users in the system:
 * View all the booked/bookmarked/waited tour for the current customer
     * Go the **Customer Center** page by Click the link **"Customer Center"**.
     * You can view all the booked/bookmarked/waited information create by you. 
-
+#### Extra feature
+* All users can use their Google account (implementing any one of them is enough) to log into the system.
+    * You can link your account with Google in the [Sign In](http://ec2-18-188-159-107.us-east-2.compute.amazonaws.com:3003/users/sign_in) page by press the button **"Sign in with Google"**. 
+    * It will create a user account based on your google account(gmail).
+* Send an email when the status of the customer moves from waitlist to booked.
+    * When your seat is ready for you, the app will move you from waitlist to booked, you could check your email (linked with google) about the information.
 #### Tours Features
 * ID
 * Name
