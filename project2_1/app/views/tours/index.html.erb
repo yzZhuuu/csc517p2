@@ -4,14 +4,13 @@
 
 
 
-<h1>Tours</h1>
+<h1>All Tours</h1>
 <p>
   <table class="table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Creator</th>
+      <th>List By</th>
+      <th>Tour Name</th>
       <th>Price</th>
       <th>Booking_deadline</th>
       <th>Duration</th>
@@ -32,9 +31,8 @@
 
     <% @tours.each do |tour| %>
       <tr>
-        <td><%= tour.name %></td>
-        <td><%= tour.description %></td>
         <td><%= tour.user.name %></td>
+        <td><%= tour.name %></td>
         <td><%= tour.price %></td>
         <td><%= tour.booking_deadline %></td>
         <td><%= tour.start_date %>~<%= tour.end_date %></td>
@@ -54,7 +52,7 @@
 </p>
 
 <br>
-  <% if user_signed_in? %>
+  <%if (current_user) && ( current_user.role.match(/admin|agent/i) )  %>
       <p><%= link_to 'Create a new tour', new_tour_path %></p>
     <% end %>
 <%#= link_to 'Back to Welcome Page', root_path %>

@@ -25,4 +25,8 @@ class HomeController < ApplicationController
 
   end
 
+  def customercenter
+    @tours = Tour.all
+  end
+
 end

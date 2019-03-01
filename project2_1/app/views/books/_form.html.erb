@@ -23,7 +23,8 @@
 
   <div class="field">
     <p><%= form.label :choice %></p>
-    <p><%= form.select :choice, options_for_select(%w[nothing wait continue cancel]) %></p>
+    <p><%= form.select :choice, options_for_select([['nothing: Book the seats'], ['wait: Add customer to waitlist along with requested seats'],
+                                                    ['continue: Book the seats available; and add remaining seats to waitlist'], ['cancel: Cancel transaction']]) %></p>
   </div>
 
 

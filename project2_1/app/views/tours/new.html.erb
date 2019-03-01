@@ -4,5 +4,8 @@
 <p><%= render 'form', tour: @tour %></p>
 
 
-<p><%= link_to 'Back', tours_path %></p>
+<p><%= link_to 'Back to All Tours', tours_path %>
+  <%if(current_user.role.match(/agent|admin/i)) %>
+    |<%= link_to 'Back to Agent Center', home_agenttourlist_path %>
+  <%end%></p>
 </div>
