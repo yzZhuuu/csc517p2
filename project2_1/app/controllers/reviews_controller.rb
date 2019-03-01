@@ -16,38 +16,38 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @tour = Tour.find(params[:tour_id])
-    @review = Review.find(params[:id])
-    @review.user = current_user
+      @tour = Tour.find(params[:tour_id])
+      @review = Review.find(params[:id])
+      @review.user = current_user
 
-    authorize @review
+      authorize @review
 
-  end
+    end
 
-  def update
-    @tour = Tour.find(params[:tour_id])
-    @review = Review.find(params[:id])
-    authorize @review
-    respond_to do |format|
-      if @review.update(review_params)
-        format.html { redirect_to tour_path(@tour), notice: 'Review was successfully updated.' }
-      else
-        format.html { render :edit }
+    def update
+      @tour = Tour.find(params[:tour_id])
+      @review = Review.find(params[:id])
+      authorize @review
+      respond_to do |format|
+        if @review.update(review_params)
+          format.html { redirect_to tour_path(@tour), notice: 'Review was successfully updated.' }
+        else
+          format.html { render :edit }
+        end
       end
     end
-  end
 
-  def destroy
-    @tour = Tour.find(params[:tour_id])
+    def destroy
+      @tour = Tour.find(params[:tour_id])
 
-    @review = Review.find(params[:id])
-    authorize @review
+      @review = Review.find(params[:id])
+      authorize @review
 
-    @review.destroy
+      @review.destroy
 
-    respond_to do |format|
-      format.html { redirect_to @tour, notice: 'Review was successfully destroyed.' }
-    end
+      respond_to do |format|
+        format.html { redirect_to @tour, notice: 'Review was successfully destroyed.' }
+      end
 
   end
 

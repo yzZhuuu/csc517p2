@@ -1,5 +1,0 @@
-class AddTourIdToLocations < ActiveRecord::Migration[5.2]
-  def change
-    add_reference :locations, :tour, foreign_key: true
-  end
-end

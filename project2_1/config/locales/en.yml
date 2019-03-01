@@ -38,6 +38,7 @@ en:
         name: "Tour Name"
         user: "Creator"
         id: "Tour ID"
+        location: "Itinerary"
       review:
         user: "Wrote by"
         tour: "Tour Name"

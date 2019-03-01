@@ -5,6 +5,8 @@
 
   <%= render 'form', tour: @tour %>
 
+
+
   <p><%= link_to 'Show', @tour %> |
     <%= link_to 'Back to All Tour List', tours_path %>
     <%if(current_user.role.match(/agent|admin/i)) %>

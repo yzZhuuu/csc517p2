@@ -30,8 +30,10 @@ class ToursController < ApplicationController
     @tour = Tour.find(params[:id])
     authorize @tour
 
+
     @country = @tour.country.split(';')
     @state = @tour.state.split(';')
+
 
 
     @review = Review.new
@@ -50,16 +52,20 @@ class ToursController < ApplicationController
     @flag = Bookmark.where(tour_id: @tour.id, user_id: current_user.id).any?
 
 
+
   end
 
   # GET /tours/new
   def new
     @tour = Tour.new
     authorize @tour
+
   end
 
   # GET /tours/1/edit
   def edit
+
+
     authorize @tour
   end
 

@@ -26,8 +26,13 @@
   </p>
 
   <p>
-    <strong>Name:</strong>
+    <strong>Tour Name:</strong>
     <%= @tour.name %>
+  </p>
+
+  <p>
+    <strong>List By:</strong>
+    <%= @tour.user.name %>
   </p>
 
   <p>
@@ -47,16 +52,6 @@
   </p>
 
   <p>
-    <strong>Price:</strong>
-    <%= @tour.price %>
-  </p>
-
-  <p>
-    <strong>Booking Deadline:</strong>
-    <%= @tour.booking_deadline %>
-  </p>
-
-  <p>
     <strong>Duration:</strong>
     <%= @tour.start_date %>~<%= @tour.end_date %>
   </p>
@@ -66,7 +61,19 @@
     <%= @tour.start_location %>
   </p>
 
+
   <p>
+    <strong>Check Photos:</strong>
+    <%= link_to 'link to photos ', tour_photos_path(@tour) %>
+  </p>
+
+  <p>
+    <strong>Price:</strong>
+    <%= @tour.price %>
+  </p>
+
+  <p>
+
     <strong>Tour Itinerary:</strong>
 
     <% @state.each_with_index do |s, i| %>
@@ -103,14 +110,10 @@
 <!--  </p>-->
 
 
-  <!--  <p>-->
-  <!--    <strong>Itinerary:</strong>-->
-  <%#= render 'locations/location' %>
-  <!--  </p>-->
-  <%# if (current_user) && (current_user.role.match(/admin|agent/i)) %>
-  <!--    <strong>Extend Itinerary:</strong>-->
-  <%#= render 'locations/form' %>
-  <%# end %>
+    <strong>Booking Deadline:</strong>
+    <%= @tour.booking_deadline %>
+  </p>
+
 
   <p>
     <strong>Contact:</strong>
@@ -127,10 +130,6 @@
   <%#= @tour.description %>
   <!--</p>-->
 
-  <p>
-    <strong>Check Photos:</strong>
-    <%= link_to 'link to photos ', tour_photos_path(@tour) %>
-  </p>
 
   <% if !@flag %>
 
