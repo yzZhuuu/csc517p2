@@ -3,7 +3,7 @@
 
 <!--  <h1>My Bookmark List</h1>-->
   <% if(current_user.role.match(/admin/i)) %>
-  <h1>All Bookmark List</h1>
+  <h1>Bookmark List</h1>
     <%else %>
     <h1>My Bookmark List</h1>
   <%end%>
@@ -43,7 +43,7 @@
 <!--  <h1>My Book List</h1>-->
 
   <% if(current_user.role.match(/admin/i)) %>
-    <h1>All Book List</h1>
+    <h1>Book List</h1>
   <%else %>
     <h1>My Book List</h1>
   <%end%>
@@ -86,7 +86,7 @@
 <!--  <h1>My Wait List</h1>-->
 
   <% if(current_user.role.match(/admin/i)) %>
-    <h1>All Wait List</h1>
+    <h1>Wait List</h1>
   <%else %>
     <h1>My Wait List</h1>
   <%end%>

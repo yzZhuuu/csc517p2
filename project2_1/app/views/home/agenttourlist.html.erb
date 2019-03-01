@@ -1,12 +1,12 @@
 <div class="container">
   <p id="notice"><%= notice %></p>
 
-<!--  <h1>My Tours</h1>-->
-  <% if(current_user.role.match(/admin/i)) %>
+  <!--  <h1>My Tours</h1>-->
+  <% if (current_user.role.match(/admin/i)) %>
     <h1>All Tours</h1>
-  <%else %>
+  <% else %>
     <h1>My Tours</h1>
-  <%end%>
+  <% end %>
 
 
   <table class="table">
@@ -21,6 +21,7 @@
       <th>Start_location</th>
       <th>Seats(avl/total)</th>
       <th>Contact</th>
+      <th>Status</th>
       <th colspan="3"></th>
     </tr>
     </thead>
@@ -30,19 +31,22 @@
     <% @tours.each do |t| %>
       <% if (t.user_id == current_user.id) || (current_user.role.match(/admin/i)) %>
 
-          <tr>
-            <td><%= t.user.name %></td>
-            <td><%= t.name %></td>
-            <td><%= t.price %></td>
-            <td><%= t.booking_deadline %></td>
-            <td><%= t.start_date %>~<%= t.end_date %></td>
-            <td><%= t.start_location %></td>
-            <td><%= t.aval_seat %>/<%= t.total_seat %></td>
-            <td><%= t.contact_info %></td>
-            <td><%= link_to 'Show', t %></td>
+        <tr>
+          <td><%= t.user.name %></td>
+          <td><%= t.name %></td>
+          <td><%= t.price %></td>
+          <td><%= t.booking_deadline %></td>
+          <td><%= t.start_date %>~<%= t.end_date %></td>
+          <td><%= t.start_location %></td>
+          <td><%= t.aval_seat %>/<%= t.total_seat %></td>
+          <td><%= t.contact_info %></td>
+          <td><%= t.status %></td>
+          <td><%= link_to 'Show', t %></td>
+          <% if t.status != 'completed' %>
             <td><%= link_to 'Edit', edit_tour_path(t) %></td>
-            <td><%= link_to 'Destroy', t, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
+          <% end %>
+          <td><%= link_to 'Destroy', t, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        </tr>
       <% end %>
     <% end %>
 
@@ -50,14 +54,14 @@
 
   </table>
 
-  <h3><strong><%= link_to 'Create a new tour', new_tour_path, method: :get %></strong></h3>
+  <h4><strong><%= link_to 'Create a new tour here', new_tour_path, method: :get %></strong></h4>
 
-<!--  <h1>Booking List of All Tours</h1>-->
-  <% if(current_user.role.match(/admin/i)) %>
+  <!--  <h1>Booking List of All Tours</h1>-->
+  <% if (current_user.role.match(/admin/i)) %>
     <h1>Booking List of All Tours</h1>
-  <%else %>
+  <% else %>
     <h1>Booking List of My Tours</h1>
-  <%end%>
+  <% end %>
 
   <table class="table">
 
@@ -75,8 +79,8 @@
 
     <% @tours.each do |t| %>
       <% if (t.user_id == current_user.id) || (current_user.role.match(/admin/i)) %>
-      <% @books = t.books %>
-      <% @books.each do |b| %>
+        <% @books = t.books %>
+        <% @books.each do |b| %>
           <tr>
             <td><%= t.user.name %></td>
             <th><%= t.name %></th>
@@ -95,11 +99,11 @@
   </table>
 
 
-  <% if(current_user.role.match(/admin/i)) %>
+  <% if (current_user.role.match(/admin/i)) %>
     <h1>Bookmark List of All Tours</h1>
-  <%else %>
+  <% else %>
     <h1>Bookmark List of My Tours</h1>
-  <%end%>
+  <% end %>
 
 
   <table class="table">

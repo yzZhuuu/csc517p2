@@ -33,12 +33,4 @@ class Tour < ApplicationRecord
     where("name LIKE ? OR description LIKE ?", "%#{search}%", "%#{search}%")
   end
 
-  # scope :status, -> (status) { where status: status }
-  # scope :location, -> (location_id) { where location_id: location_id }
-  # scope :starts_with, -> (name) { where("name like ?", "#{name}%")}
-
-
-
-
-  # validates :book_seat, numericality: { only_integer: true }
 end

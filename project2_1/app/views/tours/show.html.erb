@@ -1,5 +1,6 @@
 <div class="container">
 
+
   <p><%= link_to 'Edit Tour', edit_tour_path(@tour) %> |
     <%= link_to 'Back to All Tour List', tours_path %>
     <%if(current_user.role.match(/agent|admin/i)) %>
@@ -12,6 +13,15 @@
 
 
   <p id="notice"><%= notice %></p>
+
+  <% if (current_user) && (current_user.role.match(/admin|agent/i)) %>
+
+    <% if !((@tour.status == 'completed') && (current_user.role.match(/agent/i)))%>
+        <p><%= link_to 'Edit Tour', edit_tour_path(@tour) %></p>
+      <%end %>
+
+  <% end %>
+  <p><%= link_to 'Back to tour list', tours_path %></p>
 
   <p>
     <strong>Tour ID:</strong>
@@ -84,6 +94,11 @@
     <%= @tour.contact_info %>
   </p>
 
+  <p>
+    <strong>Status:</strong>
+    <%= @tour.status %>
+  </p>
+
   <!--<p>-->
   <!--  <strong>Available Seats:</strong>-->
   <%#= @tour.description %>
@@ -92,7 +107,7 @@
 
   <% if !@flag %>
 
-    <p><%=render 'bookmarks/form' %></p>
+    <p><%= render 'bookmarks/form' %></p>
 
   <% end %>
 
@@ -107,8 +122,10 @@
 
   <% end %>
 
+  <% if (@tour.status == 'future') %>
+    <p><%= render 'books/form' %></p>
+  <% end %>
 
-  <p><%= render 'books/form' %></p>
   <p><%= render 'books/book' %></p>
 
   <p><%= render 'waitlists/waitlist' %></p>
