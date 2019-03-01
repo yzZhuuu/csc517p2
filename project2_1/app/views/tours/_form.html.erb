@@ -55,6 +55,18 @@
     <p><%= form.text_field :start_location, required: true %></p>
   </div>
 
+  <div class="field">
+    <p><%= form.label :country %></p>
+    <p>Please type in the countries, seperated by ';'</p>
+    <p><%= form.text_field :country, required: true %></p>
+  </div>
+
+  <div class="field">
+    <p><%= form.label :state %></p>
+    <p>Please type in the states corresponding to the countries, if in the same country, separated by ','. If not, separated by ';'</p>
+    <p><%= form.text_field :state, required: true %></p>
+  </div>
+
 
   <div class="field">
     <p><%= form.label :contact_information %></p>

@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_01_202133) do
+
+ActiveRecord::Schema.define(version: 2019_03_01_212802) do
+
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id"
@@ -32,16 +34,6 @@ ActiveRecord::Schema.define(version: 2019_03_01_202133) do
     t.index ["user_id"], name: "index_books_on_user_id"
   end
 
-  create_table "locations", force: :cascade do |t|
-    t.string "country"
-    t.string "state"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "tour_id"
-    t.integer "user_id"
-    t.index ["tour_id"], name: "index_locations_on_tour_id"
-    t.index ["user_id"], name: "index_locations_on_user_id"
-  end
 
   create_table "photos", force: :cascade do |t|
     t.string "image"
@@ -79,6 +71,8 @@ ActiveRecord::Schema.define(version: 2019_03_01_202133) do
     t.date "end_date"
     t.string "start_location"
     t.string "contact_info"
+    t.string "country"
+    t.string "state"
     t.index ["user_id"], name: "index_tours_on_user_id"
   end
 

@@ -24,6 +24,22 @@ http://ec2-18-188-159-107.us-east-2.compute.amazonaws.com:3003/
 
     Password:   password
 
+#### Default Agent Account 
+
+    Name:       FirstAgent
+
+    Email:      agent@gmail.com
+
+    Password:   password
+
+#### Default Customer Account 
+
+    Name:       FirstCustomer
+
+    Email:      customer@gmail.com
+
+    Password:   password
+
 ### User Guide
 There are three (3) types of users in the system:
 * Admin
