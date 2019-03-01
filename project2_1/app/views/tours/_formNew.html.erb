@@ -15,7 +15,7 @@
 
   <div class="field">
     <p><%= form.label :name %></p>
-    <p><%= form.text_field :name, required: true %></p>
+    <p><%= form.text_field :name,required: true %></p>
   </div>
 
   <div class="field">
@@ -26,6 +26,7 @@
   <div class="field">
     <p><%= form.label :total_seat %></p>
     <p><%= form.number_field :total_seat,required: true %></p>
+<!--    <p><%# form.label :aval_seat %></p>-->
     <p><% form.hidden_field :aval_seat, value: tour.total_seat %></p>
   </div>
 
@@ -60,8 +61,9 @@
   </div>
 
   <div class="field">
+<!--    <p><%#= form.hidden_field :status, value: 'future' %></p>-->
     <p><%= form.label :status %></p>
-    <p><%= form.select :status, options_for_select(%w[future completed cancelled]) %></p>
+    <p><%= form.select :status, options_for_select(%w[future]) %></p>
   </div>
 
   <div class="actions">

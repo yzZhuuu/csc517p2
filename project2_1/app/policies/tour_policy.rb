@@ -14,7 +14,7 @@ class TourPolicy < ApplicationPolicy
   def update?
     #return true if user.present? && user == tour.user
     return true if @user.role.match (/admin/i)
-    return true if user == (tour.user) &&( @user.role.match(/agent/i) )
+    return true if user == (tour.user) && ( @user.role.match(/agent/i) ) && (tour.status != "completed")
   end
 
   def destroy?

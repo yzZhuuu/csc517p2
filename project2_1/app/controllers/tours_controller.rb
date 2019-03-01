@@ -45,7 +45,6 @@ class ToursController < ApplicationController
     @flag = Bookmark.where(tour_id: @tour.id, user_id: current_user.id).any?
 
 
-
   end
 
   # GET /tours/new
@@ -56,6 +55,7 @@ class ToursController < ApplicationController
 
   # GET /tours/1/edit
   def edit
+    authorize @tour
   end
 
   # POST /tours
@@ -68,7 +68,7 @@ class ToursController < ApplicationController
 
     @tour.user = current_user
     @tour.aval_seat = @tour.total_seat
-
+    # @tour.status = 'future'
 
 
     respond_to do |format|
@@ -89,26 +89,21 @@ class ToursController < ApplicationController
 
     old_total_seat = @tour.total_seat
     old_aval_seat = @tour.aval_seat
+    old_status = @tour.status
 
-    @tour.update(tour_params)
-
-    if (@tour.total_seat >= old_total_seat)
+    if (old_status == 'completed')
       respond_to do |format|
-        if Tour.update(@tour.id, :aval_seat => old_aval_seat + (@tour.total_seat - old_total_seat))
-          format.html {redirect_to tour_path(@tour), notice: 'Tour updated 1. '}
-          # format.json { render :show, status: :ok, location: @tour }
-        else
-          # format.html {render :edit}
-          # format.json { render json: @tour.errors, status: :unprocessable_entity }
-        end
+        format.html {redirect_to tour_path(@tour), notice: 'Completed tour can not be cancelled or re-opened.'}
       end
-
     else
 
-      if(old_aval_seat - (old_total_seat - @tour.total_seat) >= 0)
+      @tour.update(tour_params)
+
+
+      if (@tour.total_seat >= old_total_seat)
         respond_to do |format|
-          if Tour.update(@tour.id, :aval_seat => old_aval_seat - (old_total_seat - @tour.total_seat))
-            format.html {redirect_to tour_path(@tour), notice: 'Tour updated 2.'}
+          if Tour.update(@tour.id, :aval_seat => old_aval_seat + (@tour.total_seat - old_total_seat))
+            format.html {redirect_to tour_path(@tour), notice: 'Tour updated 1. '}
             # format.json { render :show, status: :ok, location: @tour }
           else
             # format.html {render :edit}
@@ -117,23 +112,32 @@ class ToursController < ApplicationController
         end
 
       else
-        Tour.update(@tour.id, :total_seat => old_total_seat)
+
+        if (old_aval_seat - (old_total_seat - @tour.total_seat) >= 0)
+          respond_to do |format|
+            if Tour.update(@tour.id, :aval_seat => old_aval_seat - (old_total_seat - @tour.total_seat))
+              format.html {redirect_to tour_path(@tour), notice: 'Tour updated 2.'}
+              # format.json { render :show, status: :ok, location: @tour }
+            else
+              # format.html {render :edit}
+              # format.json { render json: @tour.errors, status: :unprocessable_entity }
+            end
+          end
+
+        else
+          Tour.update(@tour.id, :total_seat => old_total_seat)
 
 
-        respond_to do |format|
+          respond_to do |format|
             format.html {redirect_to edit_tour_path(@tour), notice: 'Entered total seats can not less the current available seats.'}
+          end
+
+
         end
-
-
 
       end
 
-
-
-
     end
-
-
 
   end
 
@@ -157,7 +161,7 @@ class ToursController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def tour_params
-    params.require(:tour).permit(:name, :description, :total_seat, :aval_seat, :user_id, :price, :booking_deadline, :start_date, :end_date, :start_location, :contact_info)
+    params.require(:tour).permit(:name, :description, :total_seat, :aval_seat, :user_id, :price, :booking_deadline, :start_date, :end_date, :start_location, :contact_info, :status)
   end
 end
 
