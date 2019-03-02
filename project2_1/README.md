@@ -197,10 +197,34 @@ There are three (3) types of users in the system:
 
 
 ### Test 
-* RsPec Rials 
+* RsPec Rails 
     * Run "rspec" on command line to run the test.
-    * We tested the **Tour model** 
+    * The **Tour model** is tested
+    * The **Tour controller** is tested
     
+### Additional Information
+
+ **Gem Used** 
+    
+ * gem 'figaro', '1.1.1'
+  
+ * gem "administrate"
+  
+ * gem 'filterrific'
+  
+ * gem "omniauth-google-oauth2", "~> 0.2.1"
+ 
+ * gem 'devise'
+ 
+ * gem 'carrierwave', '~> 1.0'
+ 
+ * gem 'pundit'
+ 
+ * gem 'bootstrap-sass'
+ 
+ * gem 'jquery-rails'
+  
+  
 
 
 
