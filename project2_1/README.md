@@ -1,4 +1,4 @@
-# CSC 517 (601) - Object Oriented Design and Development
+# CSC/ECE 517 (601) - Object Oriented Design and Development
 ## Project 2: Tour Management System
 ### Team_25
 * Hao Lu (hlu6@ncsu.edu)
@@ -51,6 +51,7 @@ There are three (3) types of users in the system:
     * Name: GodOfWeb
     * Email: god@admin.com
     * Password: password
+    * Admin account could not be created
 * Edit profile
     * You can always directly edit your account profile at the top-right of the page by click **"Edit profile"**.
 * Go to Admin Dashboard
@@ -86,8 +87,8 @@ There are three (3) types of users in the system:
 #### Agent
 * Login 
     * Fast account
-        * Name: Agent1
-        * Email: agent1@gmail.com
+        * Name: FirstAgent
+        * Email: agent@gmail.com
         * Password: password
     * You should be able to sign_up a new agent account during the login page. 
 
@@ -119,8 +120,8 @@ There are three (3) types of users in the system:
 #### Customer
 * Login 
     * Fast account
-        * Name: Customer1
-        * Email: customer1@gmail.com
+        * Name: FirstCustomer
+        * Email: customer@gmail.com
         * Password: password
     * You should be able to sign_up a new customer account during the login page. 
     
@@ -136,14 +137,14 @@ There are three (3) types of users in the system:
     * You can cancel a bookmark by click the button **"Undo Bookmark".**   
 * Book n seats on a tour.
     * In the Tour Details page, you can book n seat under the **Book seat**. 
-    * If the number of seats you want to book is **less or equal** than the available seat, you should select:
-        * **nothing:** Book the seats.
-    * If the number of seats you want to book is greater than the available seat, you should select:
+    * If the number of seats you want to book is **less or equal** than the available seat, you select will be ignored, and seats will be booked
+    * If the number of seats you want to book is greater than the available seat, you will be able to select:
         * **wait:** Add customer to waitlist along with requested seats
-        * **continue:** Book the seats available; and add remaining seats to waitlist
+        * **continue:** Book the remaining available seats, and add the exceeded seats to waitlist
         * **cancel:** Cancel transaction
+        * **nothing:** Nothing would be happen, you will be noticed to select one of the options above
 * Cancel a booking completely or cancel a few seats from a booking done previously.
-    * You can cancel the booked seat by click the link **"Destroy"** right after the book on the booklist.
+    * You can cancel the booked seat by click the link **"Destroy"** right after the record on the booklist.
 * Submit a review for a tour that that customer has already taken. 
     * After you booked a tour, you are able to write the review with **subject** and **message** under the **Tour Detail page**.
 * Edit or delete a review they previously submitted.
@@ -154,33 +155,44 @@ There are three (3) types of users in the system:
     * Go the **Customer Center** page by Click the link **"Customer Center"**.
     * You can view all the booked/bookmarked/waited information create by you. 
 #### Extra feature
-* All users can use their Google account (implementing any one of them is enough) to log into the system.
+* All Customers can use their Google account to log into the system.
     * You can link your account with Google in the [Sign In](http://ec2-18-188-159-107.us-east-2.compute.amazonaws.com:3003/users/sign_in) page by press the button **"Sign in with Google"**. 
-    * It will create a user account based on your google account(gmail).
+    * It will create a customer account based on your google account(gmail).
 * Send an email when the status of the customer moves from waitlist to booked.
-    * When your seat is ready for you, the app will move you from waitlist to booked, you could check your email (linked with google) about the information.
-#### Tours Features
+    * When your seat is ready for you, the app will move you from the wait list to book list and send you an email notification to your email registered(as long as the email is valid).
+#### Tours Attributes
 * ID
 * Tour Name
-* List By
 * Description
+* Price
 * Total seats
 * Available seats
+* List By
 * Duration (from - to dates)
 * Start location (where the tour starts from)
 * Tour itinerary -  A list of places where the said tour will take you 
     * include at least one country; a tour can span multiple countries
+        * countries must be separated by ';'
     * include at least one state/province within each country; a tour can span multiple states
-* Photos 
-* Price
+        * states/province in one country must be separated by ','
+        * states/province in different countries must be separated by ';'
+        * the order must be the same with the countries
+    * for example, if the tour itinerary is:
+        * china, beijing
+        * US, NC
+        * US, LA
+        * Japan, Tokyo
+        * In country field, put in: china;US;Japan
+        * In state field, put in:   beijing;NC,LA;Tokyo
+* Photos(access by clicking the link under tour detailed page) 
 * Booking deadline
 * Contact information for tour operator
 * Status (In Future / Completed/ Cancelled).
-* Bookmark function
-* Book tour function
+* Reviews
+* Bookmark feature
+* Book tour feature
 * Book list
 * Wait list
-* Review list
 
 
 
