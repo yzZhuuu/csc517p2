@@ -12,8 +12,8 @@ class User < ApplicationRecord
   has_many :books
   has_many :bookmarks
 
-
-
+  validates :email, uniqueness: true
+  validates :name, :email, :role, presence: true
 
   def self.from_omniauth(access_token)
     data = access_token.info

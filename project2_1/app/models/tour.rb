@@ -14,7 +14,6 @@ class Tour < ApplicationRecord
 
   belongs_to :user
   has_many :reviews
-  has_many :locations
   has_many :photos
   has_many :books
   has_many :waitlists
@@ -31,6 +30,8 @@ class Tour < ApplicationRecord
   validates :start_location, format: { with: /\A([a-zA-Z]+(?:[\s-]*[a-zA-Z]+)?)+\z/, message: 'format is not correct'}
 
   validate :country_state_size_must_match
+  validates :name, uniqueness: true
+  validates :name, :price, :total_seat, :aval_seat, :start_location, :status, :country, :state, :user_id, presence: true
 
   # validates :country, format: { with: /\A(([a-zA-Z]+\ ?)\ ?\;?\ ?)+\z/, message: 'country format is not correct'}
   # validates :state, format: { with: /\A(([a-zA-Z]+\ ?)\,?\ ?\;?\ ?)+\z/, message: 'state format is not correct'}
