@@ -196,8 +196,10 @@ There are three (3) types of users in the system:
 
 
 
-### Test
-
+### Test 
+* RsPec Rials 
+    * Run "rspec" on command line to run the test.
+    * We tested the **Tour model** 
     
 
 
